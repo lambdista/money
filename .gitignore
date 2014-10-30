@@ -1,0 +1,22 @@
+target/
+.cache
+project/project
+project/target
+*.log
+data/
+tmp/
+logs/
+*.sh
+nohup.out
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+.idea_modules
+*.iml
+*.iws
+
