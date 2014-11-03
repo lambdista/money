@@ -3,8 +3,8 @@ package org.typesafely.money.example
 import grizzled.slf4j.Logging
 
 import org.typesafely.money.Currency._
-import org.typesafely.money.{Currency, Money, Conversion}
 import org.typesafely.money.Implicits._
+import org.typesafely.money.{Conversion, Currency, Money}
 
 
 /**
@@ -16,7 +16,8 @@ import org.typesafely.money.Implicits._
 object Main extends Logging {
 
   def main(args: Array[String]): Unit = {
-    implicit val conversion: Conversion = Map(
+
+    implicit var conversion: Conversion = Map(
       (GBP, EUR) -> 1.270,
       (EUR, USD) -> 1.268,
       (GBP, USD) -> 1.611
@@ -35,6 +36,14 @@ object Main extends Logging {
     val e = 100(USD) + 23.560
     info(s"e: $e")
 
+    synchronized {
+      conversion = Map(
+        (GBP, EUR) -> 1,
+        (EUR, USD) -> 1,
+        (GBP, USD) -> 1
+      )
+    }
+
     val f = 100(USD) * 23
     info(s"f: $f")
 
@@ -45,6 +54,9 @@ object Main extends Logging {
 
     val h = 100(USD) / 23
     info(s"h: $h")
+
+    val comp = 100(USD) > 90(EUR)
+    info(s"comp: $comp")
 
   }
 
