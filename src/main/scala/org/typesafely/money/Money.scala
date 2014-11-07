@@ -1,7 +1,6 @@
 package org.typesafely.money
 
 import grizzled.slf4j.Logging
-
 import org.typesafely.money.{toFormattedString => bigDecimalToFormattedString}
 
 /**
@@ -27,7 +26,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
   }
 
   /**
-   * Just an alias for [[org.typesafely.money.Money#apply]]
+   * Just an alias for [[org.typesafely.money.Money# a p p l y]]
    */
   def to(thatCurrency: Currency)(implicit conversion: Conversion): Money = apply(thatCurrency)
 
@@ -119,25 +118,113 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    */
   def /(thatAmount: BigDecimal)(implicit conversion: Conversion): Money = this / Money(thatAmount, this.currency)
 
+  /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is greater than `thatMoney`, false otherwise.
+   */
   def >(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ > _)
 
+  /**
+   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   *
+   * @param thatAmount the amount to compare this object with.
+   * @return true if this amount is greater than `thatAmount`, false otherwise.
+   */
   def >(thatAmount: BigDecimal): Boolean = this.amount > thatAmount
 
+  /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is greater than or equal to `thatMoney`, false otherwise.
+   */
   def >=(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ >= _)
 
+  /**
+   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   *
+   * @param thatAmount the amount to compare this object with.
+   * @return true if this amount is greater than or equal to `thatAmount`, false otherwise.
+   */
   def >=(thatAmount: BigDecimal): Boolean = this.amount >= thatAmount
 
+  /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is lesser than `thatMoney`, false otherwise.
+   */
   def <(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this >= thatMoney)
 
+  /**
+   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   *
+   * @param thatAmount the amount to compare this object with.
+   * @return true if this amount is lesser than `thatAmount`, false otherwise.
+   */
   def <(thatAmount: BigDecimal): Boolean = this.amount < thatAmount
 
+  /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is lesser than or equal to `thatMoney`, false otherwise.
+   */
   def <=(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this > thatMoney)
 
+  /**
+   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   *
+   * @param thatAmount the amount to compare this object with.
+   * @return true if this amount is lesser than or equal to `thatAmount`, false otherwise.
+   */
   def <=(thatAmount: BigDecimal): Boolean = this.amount <= thatAmount
 
+  /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is equal to `thatMoney`, false otherwise.
+   */
   def ==(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ == _)
 
+  /**
+   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   *
+   * @param thatAmount the amount to compare this object with.
+   * @return true if this amount is equal to `thatAmount`, false otherwise.
+   */
+  def ==(thatAmount: BigDecimal): Boolean = this.amount == thatAmount
+
+  /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is not equal to `thatMoney`, false otherwise.
+   */
   def !=(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this == thatMoney)
+
+  /**
+   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   *
+   * @param thatAmount the amount to compare this object with.
+   * @return true if this amount is not equal to `thatAmount`, false otherwise.
+   */
+  def !=(thatAmount: BigDecimal): Boolean = !(this == thatAmount)
 
   private def compare(thatMoney: Money, comparisonFunc: (BigDecimal, BigDecimal) => Boolean)(implicit conversion: Conversion): Boolean = {
     val thisAmount = this.amount

@@ -9,8 +9,8 @@ scalaVersion := "2.11.4"
 
 scalacOptions := Seq(
   "-feature",
-  "+language:implicitConversions",
-  "+language:higherKinds",
+  "-language:implicitConversions",
+  "-language:higherKinds",
   "-language:postfixOps",
   "-unchecked",
   "-deprecation",
