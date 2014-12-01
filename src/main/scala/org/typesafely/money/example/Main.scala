@@ -8,7 +8,7 @@ import org.typesafely.money.{Conversion, Currency, Money}
 
 
 /**
- *
+ * Main example
  *
  * @author Alessandro Lacava 
  * @since 2014-10-27

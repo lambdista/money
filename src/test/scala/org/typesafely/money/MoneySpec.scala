@@ -7,7 +7,7 @@ import org.typesafely.money.Currency._
 import org.typesafely.money.Implicits._
 
 /**
- *
+ * Specification test for the [[org.typesafely.money.Money]] class
  *
  * @author Alessandro Lacava 
  * @since 2014-11-28
@@ -19,6 +19,10 @@ class MoneySpec extends Specification {
     (EUR, USD) -> 1.268,
     (GBP, USD) -> 1.611
   )
+  val expr = 100.001(USD) + 200(EUR)
+  val exprToGBP = expr(GBP).round(5)
+  val usd = Currency("$")
+  val eur = Currency("€")
 
   override def is: Fragments = s2"""
     Test for the Money class using the following conversions:
@@ -54,17 +58,11 @@ class MoneySpec extends Specification {
 
   def e3 = (100(USD) + 210.4(EUR) to EUR).round(5) === 289.26435(EUR) must beTrue
 
-  val expr = 100.001(USD) + 200(EUR)
-  val exprToGBP = expr(GBP).round(5)
-
   def e4 = exprToGBP === 219.49162(GBP) must beTrue
 
   def e5 = 100(USD) + 23.560 === 123.56(USD) must beTrue
 
   def e6 = 100(USD) * 23 === 2300(USD) must beTrue
-
-  val usd = Currency("$")
-  val eur = Currency("€")
 
   def e7 = 100(usd) * 23(eur) === 2916.4(USD) must beTrue
 

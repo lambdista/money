@@ -5,8 +5,6 @@ import scala.math.BigDecimal.RoundingMode.RoundingMode
 
 import java.text.DecimalFormat
 
-import scala.math.BigDecimal.RoundingMode
-
 /**
  * This package object contains utility functions and type aliases
  *

@@ -192,6 +192,7 @@ object Currency {
    */
   object AED extends Currency {
     val getCode: String = "AED"
+
     override val toString = getCode
   }
 
@@ -200,6 +201,7 @@ object Currency {
    */
   object AFN extends Currency {
     val getCode: String = "AFN"
+
     override val toString = getCode
   }
 
@@ -208,6 +210,7 @@ object Currency {
    */
   object ALL extends Currency {
     val getCode: String = "ALL"
+
     override val toString = getCode
   }
 
@@ -216,6 +219,7 @@ object Currency {
    */
   object AMD extends Currency {
     val getCode: String = "AMD"
+
     override val toString = getCode
   }
 
@@ -224,6 +228,7 @@ object Currency {
    */
   object ANG extends Currency {
     val getCode: String = "ANG"
+
     override val toString = getCode
   }
 
@@ -232,6 +237,7 @@ object Currency {
    */
   object AOA extends Currency {
     val getCode: String = "AOA"
+
     override val toString = getCode
   }
 
@@ -240,6 +246,7 @@ object Currency {
    */
   object ARS extends Currency {
     val getCode: String = "ARS"
+
     override val toString = getCode
   }
 
@@ -248,6 +255,7 @@ object Currency {
    */
   object AUD extends Currency {
     val getCode: String = "AUD"
+
     override val toString = getCode
   }
 
@@ -256,6 +264,7 @@ object Currency {
    */
   object AWG extends Currency {
     val getCode: String = "AWG"
+
     override val toString = getCode
   }
 
@@ -264,6 +273,7 @@ object Currency {
    */
   object AZN extends Currency {
     val getCode: String = "AZN"
+
     override val toString = getCode
   }
 
@@ -272,6 +282,7 @@ object Currency {
    */
   object BAM extends Currency {
     val getCode: String = "BAM"
+
     override val toString = getCode
   }
 
@@ -280,6 +291,7 @@ object Currency {
    */
   object BBD extends Currency {
     val getCode: String = "BBD"
+
     override val toString = getCode
   }
 
@@ -288,6 +300,7 @@ object Currency {
    */
   object BDT extends Currency {
     val getCode: String = "BDT"
+
     override val toString = getCode
   }
 
@@ -296,6 +309,7 @@ object Currency {
    */
   object BGN extends Currency {
     val getCode: String = "BGN"
+
     override val toString = getCode
   }
 
@@ -304,6 +318,7 @@ object Currency {
    */
   object BHD extends Currency {
     val getCode: String = "BHD"
+
     override val toString = getCode
   }
 
@@ -312,6 +327,7 @@ object Currency {
    */
   object BIF extends Currency {
     val getCode: String = "BIF"
+
     override val toString = getCode
   }
 
@@ -320,6 +336,7 @@ object Currency {
    */
   object BMD extends Currency {
     val getCode: String = "BMD"
+
     override val toString = getCode
   }
 
@@ -328,6 +345,7 @@ object Currency {
    */
   object BND extends Currency {
     val getCode: String = "BND"
+
     override val toString = getCode
   }
 
@@ -336,6 +354,7 @@ object Currency {
    */
   object BOB extends Currency {
     val getCode: String = "BOB"
+
     override val toString = getCode
   }
 
@@ -344,6 +363,7 @@ object Currency {
    */
   object BRL extends Currency {
     val getCode: String = "BRL"
+
     override val toString = getCode
   }
 
@@ -352,6 +372,7 @@ object Currency {
    */
   object BSD extends Currency {
     val getCode: String = "BSD"
+
     override val toString = getCode
   }
 
@@ -360,6 +381,7 @@ object Currency {
    */
   object BTN extends Currency {
     val getCode: String = "BTN"
+
     override val toString = getCode
   }
 
@@ -368,6 +390,7 @@ object Currency {
    */
   object BWP extends Currency {
     val getCode: String = "BWP"
+
     override val toString = getCode
   }
 
@@ -376,6 +399,7 @@ object Currency {
    */
   object BYR extends Currency {
     val getCode: String = "BYR"
+
     override val toString = getCode
   }
 
@@ -384,6 +408,7 @@ object Currency {
    */
   object BZD extends Currency {
     val getCode: String = "BZD"
+
     override val toString = getCode
   }
 
@@ -392,6 +417,7 @@ object Currency {
    */
   object CAD extends Currency {
     val getCode: String = "CAD"
+
     override val toString = getCode
   }
 
@@ -400,6 +426,7 @@ object Currency {
    */
   object CDF extends Currency {
     val getCode: String = "CDF"
+
     override val toString = getCode
   }
 
@@ -408,6 +435,7 @@ object Currency {
    */
   object CHF extends Currency {
     val getCode: String = "CHF"
+
     override val toString = getCode
   }
 
@@ -416,6 +444,7 @@ object Currency {
    */
   object CLP extends Currency {
     val getCode: String = "CLP"
+
     override val toString = getCode
   }
 
@@ -424,6 +453,7 @@ object Currency {
    */
   object CNY extends Currency {
     val getCode: String = "CNY"
+
     override val toString = getCode
   }
 
@@ -432,6 +462,7 @@ object Currency {
    */
   object COP extends Currency {
     val getCode: String = "COP"
+
     override val toString = getCode
   }
 
@@ -440,6 +471,7 @@ object Currency {
    */
   object CRC extends Currency {
     val getCode: String = "CRC"
+
     override val toString = getCode
   }
 
@@ -448,6 +480,7 @@ object Currency {
    */
   object CUC extends Currency {
     val getCode: String = "CUC"
+
     override val toString = getCode
   }
 
@@ -456,6 +489,7 @@ object Currency {
    */
   object CUP extends Currency {
     val getCode: String = "CUP"
+
     override val toString = getCode
   }
 
@@ -464,6 +498,7 @@ object Currency {
    */
   object CVE extends Currency {
     val getCode: String = "CVE"
+
     override val toString = getCode
   }
 
@@ -472,6 +507,7 @@ object Currency {
    */
   object CZK extends Currency {
     val getCode: String = "CZK"
+
     override val toString = getCode
   }
 
@@ -480,6 +516,7 @@ object Currency {
    */
   object DJF extends Currency {
     val getCode: String = "DJF"
+
     override val toString = getCode
   }
 
@@ -488,6 +525,7 @@ object Currency {
    */
   object DKK extends Currency {
     val getCode: String = "DKK"
+
     override val toString = getCode
   }
 
@@ -496,6 +534,7 @@ object Currency {
    */
   object DOP extends Currency {
     val getCode: String = "DOP"
+
     override val toString = getCode
   }
 
@@ -504,6 +543,7 @@ object Currency {
    */
   object DZD extends Currency {
     val getCode: String = "DZD"
+
     override val toString = getCode
   }
 
@@ -512,6 +552,7 @@ object Currency {
    */
   object EGP extends Currency {
     val getCode: String = "EGP"
+
     override val toString = getCode
   }
 
@@ -520,6 +561,7 @@ object Currency {
    */
   object ERN extends Currency {
     val getCode: String = "ERN"
+
     override val toString = getCode
   }
 
@@ -528,6 +570,7 @@ object Currency {
    */
   object ETB extends Currency {
     val getCode: String = "ETB"
+
     override val toString = getCode
   }
 
@@ -536,6 +579,7 @@ object Currency {
    */
   object EUR extends Currency {
     val getCode: String = "EUR"
+
     override val toString = getCode
   }
 
@@ -544,6 +588,7 @@ object Currency {
    */
   object FJD extends Currency {
     val getCode: String = "FJD"
+
     override val toString = getCode
   }
 
@@ -552,6 +597,7 @@ object Currency {
    */
   object FKP extends Currency {
     val getCode: String = "FKP"
+
     override val toString = getCode
   }
 
@@ -560,6 +606,7 @@ object Currency {
    */
   object GBP extends Currency {
     val getCode: String = "GBP"
+
     override val toString = getCode
   }
 
@@ -568,6 +615,7 @@ object Currency {
    */
   object GEL extends Currency {
     val getCode: String = "GEL"
+
     override val toString = getCode
   }
 
@@ -576,6 +624,7 @@ object Currency {
    */
   object GGP extends Currency {
     val getCode: String = "GGP"
+
     override val toString = getCode
   }
 
@@ -584,6 +633,7 @@ object Currency {
    */
   object GHS extends Currency {
     val getCode: String = "GHS"
+
     override val toString = getCode
   }
 
@@ -592,6 +642,7 @@ object Currency {
    */
   object GIP extends Currency {
     val getCode: String = "GIP"
+
     override val toString = getCode
   }
 
@@ -600,6 +651,7 @@ object Currency {
    */
   object GMD extends Currency {
     val getCode: String = "GMD"
+
     override val toString = getCode
   }
 
@@ -608,6 +660,7 @@ object Currency {
    */
   object GNF extends Currency {
     val getCode: String = "GNF"
+
     override val toString = getCode
   }
 
@@ -616,6 +669,7 @@ object Currency {
    */
   object GTQ extends Currency {
     val getCode: String = "GTQ"
+
     override val toString = getCode
   }
 
@@ -624,6 +678,7 @@ object Currency {
    */
   object GYD extends Currency {
     val getCode: String = "GYD"
+
     override val toString = getCode
   }
 
@@ -632,6 +687,7 @@ object Currency {
    */
   object HKD extends Currency {
     val getCode: String = "HKD"
+
     override val toString = getCode
   }
 
@@ -640,6 +696,7 @@ object Currency {
    */
   object HNL extends Currency {
     val getCode: String = "HNL"
+
     override val toString = getCode
   }
 
@@ -648,6 +705,7 @@ object Currency {
    */
   object HRK extends Currency {
     val getCode: String = "HRK"
+
     override val toString = getCode
   }
 
@@ -656,6 +714,7 @@ object Currency {
    */
   object HTG extends Currency {
     val getCode: String = "HTG"
+
     override val toString = getCode
   }
 
@@ -664,6 +723,7 @@ object Currency {
    */
   object HUF extends Currency {
     val getCode: String = "HUF"
+
     override val toString = getCode
   }
 
@@ -672,6 +732,7 @@ object Currency {
    */
   object IDR extends Currency {
     val getCode: String = "IDR"
+
     override val toString = getCode
   }
 
@@ -680,6 +741,7 @@ object Currency {
    */
   object ILS extends Currency {
     val getCode: String = "ILS"
+
     override val toString = getCode
   }
 
@@ -688,6 +750,7 @@ object Currency {
    */
   object IMP extends Currency {
     val getCode: String = "IMP"
+
     override val toString = getCode
   }
 
@@ -696,6 +759,7 @@ object Currency {
    */
   object INR extends Currency {
     val getCode: String = "INR"
+
     override val toString = getCode
   }
 
@@ -704,6 +768,7 @@ object Currency {
    */
   object IQD extends Currency {
     val getCode: String = "IQD"
+
     override val toString = getCode
   }
 
@@ -712,6 +777,7 @@ object Currency {
    */
   object IRR extends Currency {
     val getCode: String = "IRR"
+
     override val toString = getCode
   }
 
@@ -720,6 +786,7 @@ object Currency {
    */
   object ISK extends Currency {
     val getCode: String = "ISK"
+
     override val toString = getCode
   }
 
@@ -728,6 +795,7 @@ object Currency {
    */
   object JEP extends Currency {
     val getCode: String = "JEP"
+
     override val toString = getCode
   }
 
@@ -736,6 +804,7 @@ object Currency {
    */
   object JMD extends Currency {
     val getCode: String = "JMD"
+
     override val toString = getCode
   }
 
@@ -744,6 +813,7 @@ object Currency {
    */
   object JOD extends Currency {
     val getCode: String = "JOD"
+
     override val toString = getCode
   }
 
@@ -752,6 +822,7 @@ object Currency {
    */
   object JPY extends Currency {
     val getCode: String = "JPY"
+
     override val toString = getCode
   }
 
@@ -760,6 +831,7 @@ object Currency {
    */
   object KES extends Currency {
     val getCode: String = "KES"
+
     override val toString = getCode
   }
 
@@ -768,6 +840,7 @@ object Currency {
    */
   object KGS extends Currency {
     val getCode: String = "KGS"
+
     override val toString = getCode
   }
 
@@ -776,6 +849,7 @@ object Currency {
    */
   object KHR extends Currency {
     val getCode: String = "KHR"
+
     override val toString = getCode
   }
 
@@ -784,6 +858,7 @@ object Currency {
    */
   object KMF extends Currency {
     val getCode: String = "KMF"
+
     override val toString = getCode
   }
 
@@ -792,6 +867,7 @@ object Currency {
    */
   object KPW extends Currency {
     val getCode: String = "KPW"
+
     override val toString = getCode
   }
 
@@ -800,6 +876,7 @@ object Currency {
    */
   object KRW extends Currency {
     val getCode: String = "KRW"
+
     override val toString = getCode
   }
 
@@ -808,6 +885,7 @@ object Currency {
    */
   object KWD extends Currency {
     val getCode: String = "KWD"
+
     override val toString = getCode
   }
 
@@ -816,6 +894,7 @@ object Currency {
    */
   object KYD extends Currency {
     val getCode: String = "KYD"
+
     override val toString = getCode
   }
 
@@ -824,6 +903,7 @@ object Currency {
    */
   object KZT extends Currency {
     val getCode: String = "KZT"
+
     override val toString = getCode
   }
 
@@ -832,6 +912,7 @@ object Currency {
    */
   object LAK extends Currency {
     val getCode: String = "LAK"
+
     override val toString = getCode
   }
 
@@ -840,6 +921,7 @@ object Currency {
    */
   object LBP extends Currency {
     val getCode: String = "LBP"
+
     override val toString = getCode
   }
 
@@ -848,6 +930,7 @@ object Currency {
    */
   object LKR extends Currency {
     val getCode: String = "LKR"
+
     override val toString = getCode
   }
 
@@ -856,6 +939,7 @@ object Currency {
    */
   object LRD extends Currency {
     val getCode: String = "LRD"
+
     override val toString = getCode
   }
 
@@ -864,6 +948,7 @@ object Currency {
    */
   object LSL extends Currency {
     val getCode: String = "LSL"
+
     override val toString = getCode
   }
 
@@ -872,6 +957,7 @@ object Currency {
    */
   object LTL extends Currency {
     val getCode: String = "LTL"
+
     override val toString = getCode
   }
 
@@ -880,6 +966,7 @@ object Currency {
    */
   object LYD extends Currency {
     val getCode: String = "LYD"
+
     override val toString = getCode
   }
 
@@ -888,6 +975,7 @@ object Currency {
    */
   object MAD extends Currency {
     val getCode: String = "MAD"
+
     override val toString = getCode
   }
 
@@ -896,6 +984,7 @@ object Currency {
    */
   object MDL extends Currency {
     val getCode: String = "MDL"
+
     override val toString = getCode
   }
 
@@ -904,6 +993,7 @@ object Currency {
    */
   object MGA extends Currency {
     val getCode: String = "MGA"
+
     override val toString = getCode
   }
 
@@ -912,6 +1002,7 @@ object Currency {
    */
   object MKD extends Currency {
     val getCode: String = "MKD"
+
     override val toString = getCode
   }
 
@@ -920,6 +1011,7 @@ object Currency {
    */
   object MMK extends Currency {
     val getCode: String = "MMK"
+
     override val toString = getCode
   }
 
@@ -928,6 +1020,7 @@ object Currency {
    */
   object MNT extends Currency {
     val getCode: String = "MNT"
+
     override val toString = getCode
   }
 
@@ -936,6 +1029,7 @@ object Currency {
    */
   object MOP extends Currency {
     val getCode: String = "MOP"
+
     override val toString = getCode
   }
 
@@ -944,6 +1038,7 @@ object Currency {
    */
   object MRO extends Currency {
     val getCode: String = "MRO"
+
     override val toString = getCode
   }
 
@@ -952,6 +1047,7 @@ object Currency {
    */
   object MUR extends Currency {
     val getCode: String = "MUR"
+
     override val toString = getCode
   }
 
@@ -960,6 +1056,7 @@ object Currency {
    */
   object MVR extends Currency {
     val getCode: String = "MVR"
+
     override val toString = getCode
   }
 
@@ -968,6 +1065,7 @@ object Currency {
    */
   object MWK extends Currency {
     val getCode: String = "MWK"
+
     override val toString = getCode
   }
 
@@ -976,6 +1074,7 @@ object Currency {
    */
   object MXN extends Currency {
     val getCode: String = "MXN"
+
     override val toString = getCode
   }
 
@@ -984,6 +1083,7 @@ object Currency {
    */
   object MYR extends Currency {
     val getCode: String = "MYR"
+
     override val toString = getCode
   }
 
@@ -992,6 +1092,7 @@ object Currency {
    */
   object MZN extends Currency {
     val getCode: String = "MZN"
+
     override val toString = getCode
   }
 
@@ -1000,6 +1101,7 @@ object Currency {
    */
   object NAD extends Currency {
     val getCode: String = "NAD"
+
     override val toString = getCode
   }
 
@@ -1008,6 +1110,7 @@ object Currency {
    */
   object NGN extends Currency {
     val getCode: String = "NGN"
+
     override val toString = getCode
   }
 
@@ -1016,6 +1119,7 @@ object Currency {
    */
   object NIO extends Currency {
     val getCode: String = "NIO"
+
     override val toString = getCode
   }
 
@@ -1024,6 +1128,7 @@ object Currency {
    */
   object NOK extends Currency {
     val getCode: String = "NOK"
+
     override val toString = getCode
   }
 
@@ -1032,6 +1137,7 @@ object Currency {
    */
   object NPR extends Currency {
     val getCode: String = "NPR"
+
     override val toString = getCode
   }
 
@@ -1040,6 +1146,7 @@ object Currency {
    */
   object NZD extends Currency {
     val getCode: String = "NZD"
+
     override val toString = getCode
   }
 
@@ -1048,6 +1155,7 @@ object Currency {
    */
   object OMR extends Currency {
     val getCode: String = "OMR"
+
     override val toString = getCode
   }
 
@@ -1056,6 +1164,7 @@ object Currency {
    */
   object PAB extends Currency {
     val getCode: String = "PAB"
+
     override val toString = getCode
   }
 
@@ -1064,6 +1173,7 @@ object Currency {
    */
   object PEN extends Currency {
     val getCode: String = "PEN"
+
     override val toString = getCode
   }
 
@@ -1072,6 +1182,7 @@ object Currency {
    */
   object PGK extends Currency {
     val getCode: String = "PGK"
+
     override val toString = getCode
   }
 
@@ -1080,6 +1191,7 @@ object Currency {
    */
   object PHP extends Currency {
     val getCode: String = "PHP"
+
     override val toString = getCode
   }
 
@@ -1088,6 +1200,7 @@ object Currency {
    */
   object PKR extends Currency {
     val getCode: String = "PKR"
+
     override val toString = getCode
   }
 
@@ -1096,6 +1209,7 @@ object Currency {
    */
   object PLN extends Currency {
     val getCode: String = "PLN"
+
     override val toString = getCode
   }
 
@@ -1104,6 +1218,7 @@ object Currency {
    */
   object PYG extends Currency {
     val getCode: String = "PYG"
+
     override val toString = getCode
   }
 
@@ -1112,6 +1227,7 @@ object Currency {
    */
   object QAR extends Currency {
     val getCode: String = "QAR"
+
     override val toString = getCode
   }
 
@@ -1120,6 +1236,7 @@ object Currency {
    */
   object RON extends Currency {
     val getCode: String = "RON"
+
     override val toString = getCode
   }
 
@@ -1128,6 +1245,7 @@ object Currency {
    */
   object RSD extends Currency {
     val getCode: String = "RSD"
+
     override val toString = getCode
   }
 
@@ -1136,6 +1254,7 @@ object Currency {
    */
   object RUB extends Currency {
     val getCode: String = "RUB"
+
     override val toString = getCode
   }
 
@@ -1144,6 +1263,7 @@ object Currency {
    */
   object RWF extends Currency {
     val getCode: String = "RWF"
+
     override val toString = getCode
   }
 
@@ -1152,6 +1272,7 @@ object Currency {
    */
   object SAR extends Currency {
     val getCode: String = "SAR"
+
     override val toString = getCode
   }
 
@@ -1160,6 +1281,7 @@ object Currency {
    */
   object SBD extends Currency {
     val getCode: String = "SBD"
+
     override val toString = getCode
   }
 
@@ -1168,6 +1290,7 @@ object Currency {
    */
   object SCR extends Currency {
     val getCode: String = "SCR"
+
     override val toString = getCode
   }
 
@@ -1176,6 +1299,7 @@ object Currency {
    */
   object SDG extends Currency {
     val getCode: String = "SDG"
+
     override val toString = getCode
   }
 
@@ -1184,6 +1308,7 @@ object Currency {
    */
   object SEK extends Currency {
     val getCode: String = "SEK"
+
     override val toString = getCode
   }
 
@@ -1192,6 +1317,7 @@ object Currency {
    */
   object SGD extends Currency {
     val getCode: String = "SGD"
+
     override val toString = getCode
   }
 
@@ -1200,6 +1326,7 @@ object Currency {
    */
   object SHP extends Currency {
     val getCode: String = "SHP"
+
     override val toString = getCode
   }
 
@@ -1208,6 +1335,7 @@ object Currency {
    */
   object SLL extends Currency {
     val getCode: String = "SLL"
+
     override val toString = getCode
   }
 
@@ -1216,6 +1344,7 @@ object Currency {
    */
   object SOS extends Currency {
     val getCode: String = "SOS"
+
     override val toString = getCode
   }
 
@@ -1224,6 +1353,7 @@ object Currency {
    */
   object SPL extends Currency {
     val getCode: String = "SPL"
+
     override val toString = getCode
   }
 
@@ -1232,6 +1362,7 @@ object Currency {
    */
   object SRD extends Currency {
     val getCode: String = "SRD"
+
     override val toString = getCode
   }
 
@@ -1240,6 +1371,7 @@ object Currency {
    */
   object STD extends Currency {
     val getCode: String = "STD"
+
     override val toString = getCode
   }
 
@@ -1248,6 +1380,7 @@ object Currency {
    */
   object SVC extends Currency {
     val getCode: String = "SVC"
+
     override val toString = getCode
   }
 
@@ -1256,6 +1389,7 @@ object Currency {
    */
   object SYP extends Currency {
     val getCode: String = "SYP"
+
     override val toString = getCode
   }
 
@@ -1264,6 +1398,7 @@ object Currency {
    */
   object SZL extends Currency {
     val getCode: String = "SZL"
+
     override val toString = getCode
   }
 
@@ -1272,6 +1407,7 @@ object Currency {
    */
   object THB extends Currency {
     val getCode: String = "THB"
+
     override val toString = getCode
   }
 
@@ -1280,6 +1416,7 @@ object Currency {
    */
   object TJS extends Currency {
     val getCode: String = "TJS"
+
     override val toString = getCode
   }
 
@@ -1288,6 +1425,7 @@ object Currency {
    */
   object TMT extends Currency {
     val getCode: String = "TMT"
+
     override val toString = getCode
   }
 
@@ -1296,6 +1434,7 @@ object Currency {
    */
   object TND extends Currency {
     val getCode: String = "TND"
+
     override val toString = getCode
   }
 
@@ -1304,6 +1443,7 @@ object Currency {
    */
   object TOP extends Currency {
     val getCode: String = "TOP"
+
     override val toString = getCode
   }
 
@@ -1312,6 +1452,7 @@ object Currency {
    */
   object TRY extends Currency {
     val getCode: String = "TRY"
+
     override val toString = getCode
   }
 
@@ -1320,6 +1461,7 @@ object Currency {
    */
   object TTD extends Currency {
     val getCode: String = "TTD"
+
     override val toString = getCode
   }
 
@@ -1328,6 +1470,7 @@ object Currency {
    */
   object TVD extends Currency {
     val getCode: String = "TVD"
+
     override val toString = getCode
   }
 
@@ -1336,6 +1479,7 @@ object Currency {
    */
   object TWD extends Currency {
     val getCode: String = "TWD"
+
     override val toString = getCode
   }
 
@@ -1344,6 +1488,7 @@ object Currency {
    */
   object TZS extends Currency {
     val getCode: String = "TZS"
+
     override val toString = getCode
   }
 
@@ -1352,6 +1497,7 @@ object Currency {
    */
   object UAH extends Currency {
     val getCode: String = "UAH"
+
     override val toString = getCode
   }
 
@@ -1360,6 +1506,7 @@ object Currency {
    */
   object UGX extends Currency {
     val getCode: String = "UGX"
+
     override val toString = getCode
   }
 
@@ -1368,6 +1515,7 @@ object Currency {
    */
   object USD extends Currency {
     val getCode: String = "USD"
+
     override val toString = getCode
   }
 
@@ -1376,6 +1524,7 @@ object Currency {
    */
   object UYU extends Currency {
     val getCode: String = "UYU"
+
     override val toString = getCode
   }
 
@@ -1384,6 +1533,7 @@ object Currency {
    */
   object UZS extends Currency {
     val getCode: String = "UZS"
+
     override val toString = getCode
   }
 
@@ -1392,6 +1542,7 @@ object Currency {
    */
   object VEF extends Currency {
     val getCode: String = "VEF"
+
     override val toString = getCode
   }
 
@@ -1400,6 +1551,7 @@ object Currency {
    */
   object VND extends Currency {
     val getCode: String = "VND"
+
     override val toString = getCode
   }
 
@@ -1408,6 +1560,7 @@ object Currency {
    */
   object VUV extends Currency {
     val getCode: String = "VUV"
+
     override val toString = getCode
   }
 
@@ -1416,6 +1569,7 @@ object Currency {
    */
   object WST extends Currency {
     val getCode: String = "WST"
+
     override val toString = getCode
   }
 
@@ -1424,6 +1578,7 @@ object Currency {
    */
   object XCD extends Currency {
     val getCode: String = "XCD"
+
     override val toString = getCode
   }
 
@@ -1432,6 +1587,7 @@ object Currency {
    */
   object XDR extends Currency {
     val getCode: String = "XDR"
+
     override val toString = getCode
   }
 
@@ -1440,6 +1596,7 @@ object Currency {
    */
   object XOF extends Currency {
     val getCode: String = "XOF"
+
     override val toString = getCode
   }
 
@@ -1448,6 +1605,7 @@ object Currency {
    */
   object XPF extends Currency {
     val getCode: String = "XPF"
+
     override val toString = getCode
   }
 
@@ -1456,6 +1614,7 @@ object Currency {
    */
   object YER extends Currency {
     val getCode: String = "YER"
+
     override val toString = getCode
   }
 
@@ -1464,6 +1623,7 @@ object Currency {
    */
   object ZAR extends Currency {
     val getCode: String = "ZAR"
+
     override val toString = getCode
   }
 
@@ -1472,6 +1632,7 @@ object Currency {
    */
   object ZMW extends Currency {
     val getCode: String = "ZMW"
+
     override val toString = getCode
   }
 
@@ -1480,6 +1641,7 @@ object Currency {
    */
   object ZWD extends Currency {
     val getCode: String = "ZWD"
+
     override val toString = getCode
   }
 
