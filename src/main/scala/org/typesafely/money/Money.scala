@@ -1,6 +1,11 @@
 package org.typesafely.money
 
-import grizzled.slf4j.Logging
+import scala.math.BigDecimal.RoundingMode
+import scala.math.BigDecimal.RoundingMode
+import scala.math.BigDecimal.RoundingMode.RoundingMode
+
+import com.typesafe.scalalogging.LazyLogging
+
 import org.typesafely.money.{toFormattedString => bigDecimalToFormattedString}
 
 /**
@@ -11,7 +16,7 @@ import org.typesafely.money.{toFormattedString => bigDecimalToFormattedString}
  * @author Alessandro Lacava
  * @since 2014-10-27
  */
-case class Money(amount: BigDecimal, currency: Currency) extends Logging {
+case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
 
   /**
    * Converts this money to another money represented using otherCurrency
@@ -39,7 +44,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    *         money's currency
    */
   def +(thatMoney: Money)(implicit conversion: Conversion): Money = {
-    debug(s"Adding $this to $thatMoney")
+    logger.debug(s"Adding $this to $thatMoney")
     performOperation(thatMoney, _ + _)
   }
 
@@ -61,7 +66,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    *         money's currency
    */
   def -(thatMoney: Money)(implicit conversion: Conversion): Money = {
-    debug(s"Subtracting $this from $thatMoney")
+    logger.debug(s"Subtracting $this from $thatMoney")
     performOperation(thatMoney, _ - _)
   }
 
@@ -83,7 +88,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    *         money's currency
    */
   def *(thatMoney: Money)(implicit conversion: Conversion): Money = {
-    debug(s"Multiplying $this by $thatMoney")
+    logger.debug(s"Multiplying $this by $thatMoney")
     performOperation(thatMoney, _ * _)
   }
 
@@ -105,7 +110,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    *         thatMoney to this money's currency
    */
   def /(thatMoney: Money)(implicit conversion: Conversion): Money = {
-    debug(s"Dividing $this by $thatMoney")
+    logger.debug(s"Dividing $this by $thatMoney")
     performOperation(thatMoney, _ / _)
   }
 
@@ -119,32 +124,12 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
   def /(thatAmount: BigDecimal)(implicit conversion: Conversion): Money = this / Money(thatAmount, this.currency)
 
   /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
-   *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
-   * @return true if this `Money` is greater than `thatMoney`, false otherwise.
-   */
-  def >(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ > _)
-
-  /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
    *
    * @param thatAmount the amount to compare this object with.
    * @return true if this amount is greater than `thatAmount`, false otherwise.
    */
   def >(thatAmount: BigDecimal): Boolean = this.amount > thatAmount
-
-  /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
-   *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
-   * @return true if this `Money` is greater than or equal to `thatMoney`, false otherwise.
-   */
-  def >=(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ >= _)
 
   /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
@@ -165,6 +150,16 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
   def <(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this >= thatMoney)
 
   /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is greater than or equal to `thatMoney`, false otherwise.
+   */
+  def >=(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ >= _)
+
+  /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
    *
    * @param thatAmount the amount to compare this object with.
@@ -183,6 +178,16 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
   def <=(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this > thatMoney)
 
   /**
+   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * objects to the same currency.
+   *
+   * @param thatMoney the `Money` object to compare this object with.
+   * @param conversion the conversion to use
+   * @return true if this `Money` is greater than `thatMoney`, false otherwise.
+   */
+  def >(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ > _)
+
+  /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
    *
    * @param thatAmount the amount to compare this object with.
@@ -198,15 +203,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    * @param conversion the conversion to use
    * @return true if this `Money` is equal to `thatMoney`, false otherwise.
    */
-  def ==(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ == _)
-
-  /**
-   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
-   *
-   * @param thatAmount the amount to compare this object with.
-   * @return true if this amount is equal to `thatAmount`, false otherwise.
-   */
-  def ==(thatAmount: BigDecimal): Boolean = this.amount == thatAmount
+  def ===(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ == _)
 
   /**
    * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
@@ -216,7 +213,15 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    * @param conversion the conversion to use
    * @return true if this `Money` is not equal to `thatMoney`, false otherwise.
    */
-  def !=(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this == thatMoney)
+  def !==(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this === thatMoney)
+
+  /**
+   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   *
+   * @param thatAmount the amount to compare this object with.
+   * @return true if this amount is equal to `thatAmount`, false otherwise.
+   */
+  def ===(thatAmount: BigDecimal): Boolean = this.amount == thatAmount
 
   /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
@@ -224,38 +229,27 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    * @param thatAmount the amount to compare this object with.
    * @return true if this amount is not equal to `thatAmount`, false otherwise.
    */
-  def !=(thatAmount: BigDecimal): Boolean = !(this == thatAmount)
+  def !==(thatAmount: BigDecimal): Boolean = !(this === thatAmount)
 
-  private def compare(thatMoney: Money, comparisonFunc: (BigDecimal, BigDecimal) => Boolean)(implicit conversion: Conversion): Boolean = {
-    val thisAmount = this.amount
-    val thatAmount = thatMoney.convert(thatMoney.currency, this.currency) * thatMoney.amount
-    debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, thatAmount: ${bigDecimalToFormattedString(thatAmount)}")
+  /**
+   * Rounds this `Money` to the given number of `decimalDigits` using the provided `roundingMode`
+   *
+   * @param decimalDigits the number of decimal digits to keep
+   * @param roundingMode the [[scala.math.BigDecimal.RoundingMode]] to use. Defaults to `RoundingMode.HALF_DOWN`
+   * @return a new `Money` object whose number of decimal digits is `decimalDigits`
+   */
+  def round(decimalDigits: Int, roundingMode: RoundingMode = RoundingMode.HALF_DOWN): Money =
+    Money(amount.setScale(decimalDigits, roundingMode), currency)
 
-    comparisonFunc(thisAmount, thatAmount)
-  }
+  override def hashCode(): Int = super.hashCode()
 
-  private def performOperation(thatMoney: Money, operation: (BigDecimal, BigDecimal) => BigDecimal)(implicit conversion: Conversion): Money = {
-    thatMoney match {
-      case Money(v, c) if (c == currency) => Money(operation(amount, v), currency)
-      case Money(v, c) => performOperation(thatMoney.to(currency), operation)
-    }
-  }
-
-  private def convert(from: Currency, to: Currency)(implicit conversion: Conversion): BigDecimal = {
-    if (from == to) {
-      1
-    } else {
-      val out = conversion.getOrElse((from, to), 1 / conversion((to, from)))
-      debug(s"Conversion applied (1 $from = ${bigDecimalToFormattedString(out)} $to)")
-      out
-    }
-  }
+  override def equals(obj: scala.Any): Boolean = super.equals(obj)
 
   /**
    * @return the string representation of this money which has, at most, 5 decimal digits. If you need to customize the
    *         number of decimal digits use [[org.typesafely.money.Money# t o F o r m a t t e d S t r i n g]] instead
    */
-  override def toString(): String = toFormattedString()
+  override def toString: String = toFormattedString()
 
   /**
    * Formats this money object using a number of decimal digits equals to the decimalDigits param, which defaults to 5.
@@ -264,8 +258,31 @@ case class Money(amount: BigDecimal, currency: Currency) extends Logging {
    * @return a formatted string representing this money object
    */
   def toFormattedString(decimalDigits: Int = 5): String = {
-    bigDecimalToFormattedString(amount, decimalDigits) + " " + currency.toString()
+    s"${bigDecimalToFormattedString(amount, decimalDigits)} ${currency.toString}"
   }
 
+  private def performOperation(thatMoney: Money, operation: (BigDecimal, BigDecimal) => BigDecimal)(implicit conversion: Conversion): Money = {
+    thatMoney match {
+      case Money(v, c) if c == currency => Money(operation(amount, v), currency)
+      case Money(v, c) => performOperation(thatMoney.to(currency), operation)
+    }
+  }
 
+  private def compare(thatMoney: Money, comparisonFunc: (BigDecimal, BigDecimal) => Boolean)(implicit conversion: Conversion): Boolean = {
+    val thisAmount = this.amount
+    val thatAmount = thatMoney.convert(thatMoney.currency, this.currency) * thatMoney.amount
+    logger.debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, thatAmount: ${bigDecimalToFormattedString(thatAmount)}")
+
+    comparisonFunc(thisAmount, thatAmount)
+  }
+
+  private def convert(from: Currency, to: Currency)(implicit conversion: Conversion): BigDecimal = {
+    if (from == to) {
+      1
+    } else {
+      val out = conversion.getOrElse((from, to), 1 / conversion((to, from)))
+      logger.debug(s"Conversion applied (1 $from = ${bigDecimalToFormattedString(out)} $to)")
+      out
+    }
+  }
 }

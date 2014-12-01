@@ -18,9 +18,12 @@ scalacOptions := Seq(
   "-Ywarn-adapted-args"
 )
 
+scalacOptions in Test ++= Seq("-Yrangepos")
+
 libraryDependencies ++= Seq(
-  "org.slf4j" % "slf4j-log4j12" % "1.7.7",
-  "org.clapper" %% "grizzled-slf4j" % "1.0.2"
+  "ch.qos.logback" % "logback-classic" % "1.1.2",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
+  "org.specs2" %% "specs2-core" % "2.4.12" % "test"
 )
 
 

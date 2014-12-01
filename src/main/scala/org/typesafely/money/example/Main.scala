@@ -1,6 +1,6 @@
 package org.typesafely.money.example
 
-import grizzled.slf4j.Logging
+import com.typesafe.scalalogging.LazyLogging
 
 import org.typesafely.money.Currency._
 import org.typesafely.money.Implicits._
@@ -13,50 +13,43 @@ import org.typesafely.money.{Conversion, Currency, Money}
  * @author Alessandro Lacava 
  * @since 2014-10-27
  */
-object Main extends Logging {
+object Main extends LazyLogging {
 
   def main(args: Array[String]): Unit = {
 
-    implicit var conversion: Conversion = Map(
+    implicit val conversion: Conversion = Map(
       (GBP, EUR) -> 1.270,
       (EUR, USD) -> 1.268,
       (GBP, USD) -> 1.611
     )
 
     val a = 100.001(USD) + 200(EUR) to GBP
-    info(s"a: $a")
+    logger.info(s"a: $a")
 
     val b: Money = 100(USD) + 210.4(EUR) to EUR
-    info(s"b: $b")
+    logger.info(s"b: $b")
 
     val c = 100.001(USD) + 200(EUR)
     val d = c(GBP)
-    info(s"c: $d")
+    logger.info(s"d: $d")
 
     val e = 100(USD) + 23.560
-    info(s"e: $e")
-
-    synchronized {
-      conversion = Map(
-        (GBP, EUR) -> 1,
-        (EUR, USD) -> 1,
-        (GBP, USD) -> 1
-      )
-    }
+    logger.info(s"e: $e")
 
     val f = 100(USD) * 23
-    info(s"f: $f")
+    logger.info(s"f: $f")
 
     val usd = Currency("USD")
 
     val g = 100(usd) * 23(EUR)
-    info(s"g: $g")
+    logger.info(s"g: $g")
 
     val h = 100(USD) / 23
-    info(s"h: $h")
+    logger.info(s"h: $h")
 
     val comp = 100(USD) > 90(EUR)
-    info(s"comp: $comp")
+    logger.info(s"100 USD > 90 EUR: $comp")
+
 
   }
 

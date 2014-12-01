@@ -1,8 +1,11 @@
 package org.typesafely
 
 import scala.math.BigDecimal.RoundingMode
+import scala.math.BigDecimal.RoundingMode.RoundingMode
 
 import java.text.DecimalFormat
+
+import scala.math.BigDecimal.RoundingMode
 
 /**
  * This package object contains utility functions and type aliases
@@ -21,7 +24,7 @@ package object money {
    * @param decimalDigits the number of decimal digits to include. The valid range is [0, 100], both inclusive
    * @return a formatted string representing the value passed as a parameter
    */
-  def toFormattedString(value: BigDecimal, decimalDigits: Int = 5): String = {
+  def toFormattedString(value: BigDecimal, decimalDigits: Int = 5, roundingMode: RoundingMode = RoundingMode.HALF_DOWN): String = {
     val lowerBound = 0
     val upperBound = 100
     require(decimalDigits >= 0 && decimalDigits <= 100, s"decimalDigits valid range is [$lowerBound, $upperBound], both inclusive")
@@ -33,7 +36,7 @@ package object money {
       new DecimalFormat("0." + ("#" * decimalDigits))
     }
 
-    df.format(value.setScale(decimalDigits, RoundingMode.HALF_DOWN).underlying())
+    df.format(value.setScale(decimalDigits, roundingMode).underlying())
   }
 
 }

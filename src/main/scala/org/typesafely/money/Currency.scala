@@ -10,6 +10,8 @@ trait Currency
 
 object Currency {
 
+  val $ = USD
+
   /**
    * Builds a [[org.typesafely.money.Currency]] object by decoding its corresponding code. It's case-insensitive so,
    * for example, passing "USD" or "usd" always yields a USD object.
@@ -1368,8 +1370,6 @@ object Currency {
     val getCode: String = "USD"
     override val toString = getCode
   }
-
-  val $ = USD
 
   /**
    * Uruguay Peso
