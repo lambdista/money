@@ -1,7 +1,7 @@
-# Scala DSL for Money manipulation #
+# Scala DSL for Money-related operations #
 
-Simple Domain-Specific Language (DSL) for money manipulation. It lets you perform operations among different currencies
-by, transparently, doing all internal conversions. The conversion map is injected implicitly by the client code.
+This Domain-Specific Language (DSL) lets you perform operations among different currencies,
+by transparently doing all internal conversions. The conversion map is injected implicitly by the client code.
 
 ## Build ##
 This project is managed with [SBT](http://www.scala-sbt.org/) so it can be built using:
@@ -23,8 +23,6 @@ import com.lambdista.money.Currency._
 
 object Main {
 
-  private val logger = Logger(LoggerFactory.getLogger(this.getClass))
-
   def main(args: Array[String]): Unit = {
 
     implicit val conversion: Conversion = Map(
@@ -34,31 +32,31 @@ object Main {
     )
 
     val sumAndConversion1 = 100.001(USD) + 200(EUR) to GBP
-    logger.info(s"sumAndConversion1: $sumAndConversion1")
+    println(s"sumAndConversion1: $sumAndConversion1")
 
     val sumAndConversion2: Money = 100(USD) + 210.4(EUR) to EUR
-    logger.info(s"sumAndConversion2: $sumAndConversion2")
+    println(s"sumAndConversion2: $sumAndConversion2")
 
     val sum = 100.001(USD) + 200(EUR)
     val simpleConversion = sum(GBP)
-    logger.info(s"simpleConversion: $simpleConversion")
+    println(s"simpleConversion: $simpleConversion")
 
     val sumWithSimpleNumber = 100(USD) + 23.560
-    logger.info(s"sumWithSimpleNumber: $sumWithSimpleNumber")
+    println(s"sumWithSimpleNumber: $sumWithSimpleNumber")
 
     val multiplicationWithSimpleNumber = 100(USD) * 23
-    logger.info(s"multiplicationWithSimpleNumber: $multiplicationWithSimpleNumber")
+    println(s"multiplicationWithSimpleNumber: $multiplicationWithSimpleNumber")
 
     val usd = Currency("USD")
 
     val multiplication = 100(usd) * 23(EUR)
-    logger.info(s"multiplication: $multiplication")
+    println(s"multiplication: $multiplication")
 
     val divisionWithSimpleNumber = 100(USD) / 23
-    logger.info(s"divisionWithSimpleNumber: $divisionWithSimpleNumber")
+    println(s"divisionWithSimpleNumber: $divisionWithSimpleNumber")
 
     val comparison = 100(USD) > 90(EUR)
-    logger.info(s"100 USD > 90 EUR? $comparison")
+    println(s"100 USD > 90 EUR? $comparison")
 
   }
 
@@ -68,6 +66,13 @@ object Main {
 As you can see the client code just needs two simple imports and an implicit value of type `Conversion`
 in order to use the DSL. The operations shown in the previous code are only a few among the available ones.
 Have a look at the `Money` class for a complete coverage.
+
+## Run the example ##
+To run the previous example launch:
+
+```
+$ sbt run
+```
 
 ## Bugs and Feedback ##
 For bugs, questions and discussions please use the [Github Issues](https://github.com/lambdista/money/issues).
