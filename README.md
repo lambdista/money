@@ -1,4 +1,4 @@
-# Scala DSL for Money-related operations #
+# Scala DSL for money-related operations #
 
 This Domain-Specific Language (DSL) lets you perform operations among different currencies,
 by transparently doing all internal conversions. The conversion map is injected implicitly by the client code.
