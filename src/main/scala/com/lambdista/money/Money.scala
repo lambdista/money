@@ -1,11 +1,11 @@
-package org.typesafely.money
+package com.lambdista.money
 
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
 
 import com.typesafe.scalalogging.LazyLogging
 
-import org.typesafely.money.{toFormattedString => bigDecimalToFormattedString}
+import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
 
 /**
  * This is the main class of the lib. A Money is represented by its `amount` and `currency`.
@@ -30,7 +30,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
   }
 
   /**
-   * Just an alias for [[org.typesafely.money.Money# a p p l y]]
+   * Just an alias for [[com.lambdista.money.Money# a p p l y]]
    */
   def to(thatCurrency: Currency)(implicit conversion: Conversion): Money = apply(thatCurrency)
 
@@ -264,7 +264,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
 
   /**
    * @return the string representation of this money which has, at most, 5 decimal digits. If you need to customize the
-   *         number of decimal digits use [[org.typesafely.money.Money# t o F o r m a t t e d S t r i n g]] instead
+   *         number of decimal digits use [[com.lambdista.money.Money# t o F o r m a t t e d S t r i n g]] instead
    */
   override def toString: String = toFormattedString()
 

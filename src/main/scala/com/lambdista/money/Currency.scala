@@ -1,4 +1,4 @@
-package org.typesafely.money
+package com.lambdista.money
 
 /**
  * Generic Currency
@@ -13,11 +13,11 @@ object Currency {
   val $ = USD
 
   /**
-   * Builds a [[org.typesafely.money.Currency]] object by decoding its corresponding code. It's case-insensitive so,
+   * Builds a [[com.lambdista.money.Currency]] object by decoding its corresponding code. It's case-insensitive so,
    * for example, passing "USD" or "usd" always yields a USD object.
    *
    * @param s the string to decode
-   * @return an object of type [[org.typesafely.money.Currency]]
+   * @return an object of type [[com.lambdista.money.Currency]]
    */
   def apply(s: String): Currency = s.toUpperCase match {
     case "AED" => AED

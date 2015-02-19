@@ -1,4 +1,4 @@
-package org.typesafely
+package com.lambdista
 
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
@@ -14,6 +14,21 @@ import java.text.DecimalFormat
 package object money {
 
   type Conversion = Map[(Currency, Currency), BigDecimal]
+
+  /**
+   * Implicits for this DSL
+   */
+  implicit class BigDecimalOps(value: BigDecimal) {
+    def apply(currency: Currency): Money = Money(value, currency)
+  }
+
+  implicit class IntOps(value: Int) {
+    def apply(currency: Currency): Money = (value: BigDecimal).apply(currency)
+  }
+
+  implicit class DoubleOps(value: Double) {
+    def apply(currency: Currency): Money = (value: BigDecimal).apply(currency)
+  }
 
   /**
    * Formats the BigDecimal value using a number of decimal digits equals to the decimalDigits param, which defaults to 5.

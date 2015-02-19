@@ -1,13 +1,13 @@
-package org.typesafely.money
+package com.lambdista.money
 
 import org.specs2.Specification
 import org.specs2.specification.Fragments
 
-import org.typesafely.money.Currency._
-import org.typesafely.money.Implicits._
+import com.lambdista.money.Currency._
+import com.lambdista.money.Implicits._
 
 /**
- * Specification test for the [[org.typesafely.money.Money]] class
+ * Specification test for the [[com.lambdista.money.Money]] class
  *
  * @author Alessandro Lacava 
  * @since 2014-11-28
@@ -19,6 +19,7 @@ class MoneySpec extends Specification {
     (EUR, USD) -> 1.268,
     (GBP, USD) -> 1.611
   )
+
   val expr = 100.001(USD) + 200(EUR)
   val exprToGBP = expr(GBP).round(5)
   val usd = Currency("$")
