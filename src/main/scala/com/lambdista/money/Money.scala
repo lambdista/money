@@ -30,7 +30,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
   }
 
   /**
-   * Just an alias for [[com.lambdista.money.Money# a p p l y]]
+   * Just an alias for `apply`
    */
   def to(thatCurrency: Currency)(implicit conversion: Conversion): Money = apply(thatCurrency)
 
