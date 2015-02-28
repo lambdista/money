@@ -4,7 +4,6 @@ import org.specs2.Specification
 import org.specs2.specification.Fragments
 
 import com.lambdista.money.Currency._
-import com.lambdista.money.Implicits._
 
 /**
  * Specification test for the [[com.lambdista.money.Money]] class

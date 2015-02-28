@@ -12,19 +12,19 @@ import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
  *
  * @param amount the amount of this money
  * @param currency the currency for this money
+ * @param conversion the conversion to use
  * @author Alessandro Lacava
  * @since 2014-10-27
  */
-case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
+case class Money(amount: BigDecimal, currency: Currency)(implicit conversion: Conversion) extends LazyLogging {
 
   /**
    * Converts this money to another money represented using otherCurrency
    *
    * @param thatCurrency the currency to convert this money to
-   * @param conversion the conversion to use
    * @return a new object where its currency is expressed in terms of otherCurrency
    */
-  def apply(thatCurrency: Currency)(implicit conversion: Conversion): Money = {
+  def apply(thatCurrency: Currency): Money = {
     val rate = convert(currency, thatCurrency)
     Money(amount * rate, thatCurrency)
   }
@@ -32,17 +32,16 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
   /**
    * Just an alias for `apply`
    */
-  def to(thatCurrency: Currency)(implicit conversion: Conversion): Money = apply(thatCurrency)
+  def to(thatCurrency: Currency): Money = apply(thatCurrency)
 
   /**
    * Adds this money to thatMoney. The result is expressed in terms of this money's currency.
    *
    * @param thatMoney the money to sum to this money
-   * @param conversion the conversion to use
    * @return a new object which is the result of summing this money to thatMoney after converting thatMoney to this
    *         money's currency
    */
-  def +(thatMoney: Money)(implicit conversion: Conversion): Money = {
+  def +(thatMoney: Money): Money = {
     logger.debug(s"Adding $this to $thatMoney")
     performOperation(thatMoney, _ + _)
   }
@@ -60,11 +59,10 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * Subtracts thatMoney from this money. The result is expressed in terms of this money's currency.
    *
    * @param thatMoney the money to subtract from this money
-   * @param conversion the conversion to use
    * @return a new object which is the result of subtracting thatMoney from this money after converting thatMoney to this
    *         money's currency
    */
-  def -(thatMoney: Money)(implicit conversion: Conversion): Money = {
+  def -(thatMoney: Money): Money = {
     logger.debug(s"Subtracting $this from $thatMoney")
     performOperation(thatMoney, _ - _)
   }
@@ -73,20 +71,18 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * Subtracts amount from this money.
    *
    * @param thatAmount the amount to sum to this money
-   * @param conversion the conversion to use
    * @return a new object which is the result of summing amount to this money
    */
-  def -(thatAmount: BigDecimal)(implicit conversion: Conversion): Money = this - Money(thatAmount, this.currency)
+  def -(thatAmount: BigDecimal): Money = this - Money(thatAmount, this.currency)
 
   /**
    * Multiplies thatMoney by this money. The result is expressed in terms of this money's currency.
    *
    * @param thatMoney the money to multiply by this money
-   * @param conversion the conversion to use
    * @return a new object which is the result of multiplying thatMoney by this money after converting thatMoney to this
    *         money's currency
    */
-  def *(thatMoney: Money)(implicit conversion: Conversion): Money = {
+  def *(thatMoney: Money): Money = {
     logger.debug(s"Multiplying $this by $thatMoney")
     performOperation(thatMoney, _ * _)
   }
@@ -95,20 +91,18 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * Multiplies amount by this money.
    *
    * @param thatAmount the amount to multiply by this money
-   * @param conversion the conversion to use
    * @return a new object which is the result of multiplying amount to this money
    */
-  def *(thatAmount: BigDecimal)(implicit conversion: Conversion): Money = this * Money(thatAmount, this.currency)
+  def *(thatAmount: BigDecimal): Money = this * Money(thatAmount, this.currency)
 
   /**
    * Divides this money by thatMoney. The result is expressed in terms of this money's currency.
    *
    * @param thatMoney the money to use ad divisor
-   * @param conversion the conversion to use
    * @return a new object which is the result of dividing this money (dividend) by thatMoney (divisor) after converting
    *         thatMoney to this money's currency
    */
-  def /(thatMoney: Money)(implicit conversion: Conversion): Money = {
+  def /(thatMoney: Money): Money = {
     logger.debug(s"Dividing $this by $thatMoney")
     performOperation(thatMoney, _ / _)
   }
@@ -117,10 +111,9 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * Divides amount by this money.
    *
    * @param thatAmount the amount to multiply by this money
-   * @param conversion the conversion to use
    * @return a new object which is the result of multiplying amount to this money
    */
-  def /(thatAmount: BigDecimal)(implicit conversion: Conversion): Money = this / Money(thatAmount, this.currency)
+  def /(thatAmount: BigDecimal): Money = this / Money(thatAmount, this.currency)
 
   /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
@@ -143,20 +136,18 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * objects to the same currency.
    *
    * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
    * @return true if this `Money` is lesser than `thatMoney`, false otherwise.
    */
-  def <(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this >= thatMoney)
+  def <(thatMoney: Money): Boolean = !(this >= thatMoney)
 
   /**
    * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
    * objects to the same currency.
    *
    * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
    * @return true if this `Money` is greater than or equal to `thatMoney`, false otherwise.
    */
-  def >=(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ >= _)
+  def >=(thatMoney: Money): Boolean = compare(thatMoney, _ >= _)
 
   /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
@@ -171,22 +162,20 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * objects to the same currency.
    *
    * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
    * @return true if this `Money` is lesser than or equal to `thatMoney`, false otherwise.
    */
-  def <=(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this > thatMoney)
+  def <=(thatMoney: Money): Boolean = !(this > thatMoney)
 
   /**
    * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
    * objects to the same currency.
    *
    * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
    * @return true if this `Money` is greater than `thatMoney`, false otherwise.
    */
-  def >(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ > _)
+  def >(thatMoney: Money): Boolean = compare(thatMoney, _ > _)
 
-  private def compare(thatMoney: Money, comparisonFunc: (BigDecimal, BigDecimal) => Boolean)(implicit conversion: Conversion): Boolean = {
+  private def compare(thatMoney: Money, comparisonFunc: (BigDecimal, BigDecimal) => Boolean): Boolean = {
     val thisAmount = this.amount
     val thatAmount = thatMoney.convert(thatMoney.currency, this.currency) * thatMoney.amount
     logger.debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, thatAmount: ${bigDecimalToFormattedString(thatAmount)}")
@@ -194,7 +183,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
     comparisonFunc(thisAmount, thatAmount)
   }
 
-  private def convert(from: Currency, to: Currency)(implicit conversion: Conversion): BigDecimal = {
+  private def convert(from: Currency, to: Currency): BigDecimal = {
     if (from == to) {
       1
     } else {
@@ -217,20 +206,18 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * objects to the same currency.
    *
    * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
    * @return true if this `Money` is not equal to `thatMoney`, false otherwise.
    */
-  def !==(thatMoney: Money)(implicit conversion: Conversion): Boolean = !(this === thatMoney)
+  def !==(thatMoney: Money): Boolean = !(this === thatMoney)
 
   /**
    * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
    * objects to the same currency.
    *
    * @param thatMoney the `Money` object to compare this object with.
-   * @param conversion the conversion to use
    * @return true if this `Money` is equal to `thatMoney`, false otherwise.
    */
-  def ===(thatMoney: Money)(implicit conversion: Conversion): Boolean = compare(thatMoney, _ == _)
+  def ===(thatMoney: Money): Boolean = compare(thatMoney, _ == _)
 
   /**
    * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
@@ -252,7 +239,6 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
    * Rounds this `Money` to the given number of `decimalDigits` using the provided `roundingMode`
    *
    * @param decimalDigits the number of decimal digits to keep
-   * @param roundingMode the [[scala.math.BigDecimal.RoundingMode]] to use. Defaults to `RoundingMode.HALF_DOWN`
    * @return a new `Money` object whose number of decimal digits is `decimalDigits`
    */
   def round(decimalDigits: Int, roundingMode: RoundingMode = RoundingMode.HALF_DOWN): Money =
@@ -264,7 +250,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
 
   /**
    * @return the string representation of this money which has, at most, 5 decimal digits. If you need to customize the
-   *         number of decimal digits use [[com.lambdista.money.Money# t o F o r m a t t e d S t r i n g]] instead
+   *         number of decimal digits use `toFormattedString` instead
    */
   override def toString: String = toFormattedString()
 
@@ -278,7 +264,7 @@ case class Money(amount: BigDecimal, currency: Currency) extends LazyLogging {
     s"${bigDecimalToFormattedString(amount, decimalDigits)} ${currency.toString}"
   }
 
-  private def performOperation(thatMoney: Money, operation: (BigDecimal, BigDecimal) => BigDecimal)(implicit conversion: Conversion): Money = {
+  private def performOperation(thatMoney: Money, operation: (BigDecimal, BigDecimal) => BigDecimal): Money = {
     thatMoney match {
       case Money(v, c) if c == currency => Money(operation(amount, v), currency)
       case Money(v, c) => performOperation(thatMoney.to(currency), operation)

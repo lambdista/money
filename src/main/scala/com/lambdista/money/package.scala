@@ -19,15 +19,15 @@ package object money {
    * Implicits for this DSL
    */
   implicit class BigDecimalOps(value: BigDecimal) {
-    def apply(currency: Currency): Money = Money(value, currency)
+    def apply(currency: Currency)(implicit conversion: Conversion): Money = Money(value, currency)
   }
 
   implicit class IntOps(value: Int) {
-    def apply(currency: Currency): Money = (value: BigDecimal).apply(currency)
+    def apply(currency: Currency)(implicit conversion: Conversion): Money = (value: BigDecimal).apply(currency)
   }
 
   implicit class DoubleOps(value: Double) {
-    def apply(currency: Currency): Money = (value: BigDecimal).apply(currency)
+    def apply(currency: Currency)(implicit conversion: Conversion): Money = (value: BigDecimal).apply(currency)
   }
 
   /**
