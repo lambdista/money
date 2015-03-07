@@ -25,11 +25,13 @@ object Main {
 
   def main(args: Array[String]): Unit = {
 
-    implicit val conversion: Conversion = Map(
+    val conversion: Conversion = Map(
       (GBP, EUR) -> 1.270,
       (EUR, USD) -> 1.268,
       (GBP, USD) -> 1.611
     )
+
+    implicit val converter = Converter(conversion)
 
     val sumAndConversion1 = 100.001(USD) + 200(EUR) to GBP
     println(s"sumAndConversion1: $sumAndConversion1")
@@ -63,7 +65,7 @@ object Main {
 }
 ```
 
-As you can see the client code just needs two simple imports and an implicit value of type `Conversion`
+As you can see the client code just needs two simple imports and an implicit value of type `Converter`
 in order to use the DSL. The operations shown in the previous code are only a few among the available ones.
 Have a look at the `Money` class for a complete coverage.
 
