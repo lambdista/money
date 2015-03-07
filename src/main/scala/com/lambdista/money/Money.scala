@@ -22,6 +22,7 @@ import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
 case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Converter) {
 
   private val logger = Logger(LoggerFactory.getLogger(this.getClass))
+
   /**
    * Converts this money to another money represented using otherCurrency
    *
@@ -36,7 +37,7 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Con
   /**
    * Just an alias for `apply`
    */
-  def to(thatCurrency: Currency): Money = apply(thatCurrency)
+  val to: Currency => Money = apply(_)
 
   /**
    * Adds this money to thatMoney. The result is expressed in terms of this money's currency.
@@ -236,10 +237,6 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Con
    */
   def round(decimalDigits: Int, roundingMode: RoundingMode = RoundingMode.HALF_DOWN): Money =
     Money(amount.setScale(decimalDigits, roundingMode), currency)
-
-  override def hashCode(): Int = super.hashCode()
-
-  override def equals(obj: scala.Any): Boolean = super.equals(obj)
 
   /**
    * @return the string representation of this money which has, at most, 5 decimal digits. If you need to customize the

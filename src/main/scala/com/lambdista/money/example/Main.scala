@@ -14,9 +14,9 @@ object Main {
   def main(args: Array[String]): Unit = {
 
     val conversion: Conversion = Map(
-      (GBP, EUR) -> 1.270,
-      (EUR, USD) -> 1.268,
-      (GBP, USD) -> 1.611
+      (GBP, EUR) -> 1.39,
+      (EUR, USD) -> 1.08,
+      (GBP, USD) -> 1.50
     )
 
     implicit val converter = Converter(conversion)
@@ -45,8 +45,8 @@ object Main {
     val divisionWithSimpleNumber = 100(USD) / 23
     println(s"divisionWithSimpleNumber: $divisionWithSimpleNumber")
 
-    val comparison = 100(USD) > 90(EUR)
-    println(s"100 USD > 90 EUR? $comparison")
+    val comparison = 100(USD) > 99(EUR)
+    println(s"100 USD > 99 EUR? $comparison")
 
   }
 
