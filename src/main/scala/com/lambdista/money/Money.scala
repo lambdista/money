@@ -1,9 +1,11 @@
 package com.lambdista.money
 
+import org.slf4j.LoggerFactory
+
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
 
-import com.typesafe.scalalogging.LazyLogging
+import com.typesafe.scalalogging.{Logger, LazyLogging}
 
 import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
 
@@ -12,12 +14,14 @@ import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
  *
  * @param amount the amount of this money
  * @param currency the currency for this money
- * @param conversion the conversion to use
+ * @param converter the `Converter` to use
+ *
  * @author Alessandro Lacava
  * @since 2014-10-27
  */
-case class Money(amount: BigDecimal, currency: Currency)(implicit conversion: Conversion) extends LazyLogging {
+case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Converter) {
 
+  private val logger = Logger(LoggerFactory.getLogger(this.getClass))
   /**
    * Converts this money to another money represented using otherCurrency
    *
@@ -25,7 +29,7 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit conversion: Co
    * @return a new object where its currency is expressed in terms of otherCurrency
    */
   def apply(thatCurrency: Currency): Money = {
-    val rate = convert(currency, thatCurrency)
+    val rate = converter.convert(currency, thatCurrency)
     Money(amount * rate, thatCurrency)
   }
 
@@ -50,10 +54,9 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit conversion: Co
    * Adds amount to this money.
    *
    * @param thatAmount the amount to sum to this money
-   * @param conversion the conversion to use
    * @return a new object which is the result of summing amount to this money
    */
-  def +(thatAmount: BigDecimal)(implicit conversion: Conversion): Money = this + Money(thatAmount, this.currency)
+  def +(thatAmount: BigDecimal): Money = this + Money(thatAmount, this.currency)
 
   /**
    * Subtracts thatMoney from this money. The result is expressed in terms of this money's currency.
@@ -177,20 +180,10 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit conversion: Co
 
   private def compare(thatMoney: Money, comparisonFunc: (BigDecimal, BigDecimal) => Boolean): Boolean = {
     val thisAmount = this.amount
-    val thatAmount = thatMoney.convert(thatMoney.currency, this.currency) * thatMoney.amount
+    val thatAmount = converter.convert(thatMoney.currency, this.currency) * thatMoney.amount
     logger.debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, thatAmount: ${bigDecimalToFormattedString(thatAmount)}")
 
     comparisonFunc(thisAmount, thatAmount)
-  }
-
-  private def convert(from: Currency, to: Currency): BigDecimal = {
-    if (from == to) {
-      1
-    } else {
-      val out = conversion.getOrElse((from, to), 1 / conversion((to, from)))
-      logger.debug(s"Conversion applied (1 $from = ${bigDecimalToFormattedString(out)} $to)")
-      out
-    }
   }
 
   /**

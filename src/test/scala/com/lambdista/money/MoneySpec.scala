@@ -13,11 +13,13 @@ import com.lambdista.money.Currency._
  */
 class MoneySpec extends Specification {
 
-  implicit val conversion: Conversion = Map(
+  val conversion: Conversion = Map(
     (GBP, EUR) -> 1.270,
     (EUR, USD) -> 1.268,
     (GBP, USD) -> 1.611
   )
+
+  implicit val converter = Converter(conversion)
 
   val expr = 100.001(USD) + 200(EUR)
   val exprToGBP = expr(GBP).round(5)

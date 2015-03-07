@@ -6,7 +6,9 @@ package com.lambdista.money
  * @author Alessandro Lacava 
  * @since 2014-10-27
  */
-trait Currency
+trait Currency {
+  def getCode: String
+}
 
 object Currency {
 
