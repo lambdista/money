@@ -101,7 +101,7 @@ val conversion: Conversion = Map(
 implicit val converter = Converter(conversion)
 ```
 
-This way you can start playing with the DSL expressions (e.g. 100(USD) + 90(EUR)) without worrying about imports
+This way you can start playing with the DSL expressions (e.g.: `100(USD) + 90(EUR)`) without worrying about imports
 and the conversion map. Of course if you need to use your own conversion you can redefine it.
 
 ## Bugs and Feedback
