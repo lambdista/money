@@ -16,21 +16,6 @@ package object money {
   type Conversion = Map[(Currency, Currency), BigDecimal]
 
   /**
-   * Implicits for this DSL
-   */
-  implicit class BigDecimalOps(value: BigDecimal) {
-    def apply(currency: Currency)(implicit converter: Converter): Money = Money(value, currency)
-  }
-
-  implicit class IntOps(value: Int) {
-    def apply(currency: Currency)(implicit converter: Converter): Money = (value: BigDecimal).apply(currency)
-  }
-
-  implicit class DoubleOps(value: Double) {
-    def apply(currency: Currency)(implicit converter: Converter): Money = (value: BigDecimal).apply(currency)
-  }
-
-  /**
    * Formats the BigDecimal value using a number of decimal digits equals to the decimalDigits param, which defaults to 5.
    *
    * @param value the BigDecimal value to format

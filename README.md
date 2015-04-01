@@ -1,9 +1,9 @@
-# Scala DSL for money-related operations #
+# Scala DSL for money-related operations
 
 This Domain-Specific Language (DSL) lets you perform operations among different currencies,
 by transparently doing all internal conversions. The conversion map is injected implicitly by the client code.
 
-## Build ##
+## Build
 This project is managed with [SBT](http://www.scala-sbt.org/) so it can be built using:
 
 ```
@@ -14,12 +14,13 @@ $ sbt package
 
 You'll find the `jar` under the usual `target/scala-$VERSION` directory where `$VERSION` is the Scala version.
 
-## Usage Example ##
+## Usage Example
 Here's a simple usage example:
 
 ```scala
 import com.lambdista.money._
 import com.lambdista.money.Currency._
+import com.lambdista.money.syntax._
 
 object Main {
 
@@ -65,21 +66,47 @@ object Main {
 }
 ```
 
-As you can see the client code just needs two simple imports and an implicit value of type `Converter`
+As you can see the client code just needs three simple imports and an implicit value of type `Converter`
 in order to use the DSL. The operations shown in the previous code are only a few among the available ones.
 Have a look at the `Money` class for a complete coverage.
 
-## Run the example ##
+## Run the example
 To run the previous example launch:
 
 ```
 $ sbt run
 ```
 
-## Bugs and Feedback ##
+## Play with the REPL
+To play with Scala's REPL launch:
+
+```
+$ sbt console
+```
+
+This will automatically fire the Scala's REPL and run the following commands for you:
+
+```scala
+import com.lambdista.money._
+import com.lambdista.money.Currency._
+import com.lambdista.money.syntax._
+
+val conversion: Conversion = Map(
+  (GBP, EUR) -> 1.270,
+  (EUR, USD) -> 1.268,
+  (GBP, USD) -> 1.611
+)
+
+implicit val converter = Converter(conversion)
+```
+
+This way you can start playing with the DSL expressions (e.g. 100(USD) + 90(EUR)) without worrying about imports
+and the conversion map. Of course if you need to use your own conversion you can redefine it.
+
+## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/lambdista/money/issues).
 
-## License ##
+## License
 Copyright 2014 Alessandro Lacava.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance

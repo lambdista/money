@@ -2,14 +2,15 @@ package com.lambdista.money.example
 
 import com.lambdista.money.Currency._
 import com.lambdista.money._
+import com.lambdista.money.syntax._
 
 /**
- * Main example
+ * Usage example
  *
  * @author Alessandro Lacava 
  * @since 2014-10-27
  */
-object Main {
+object Usage {
 
   def main(args: Array[String]): Unit = {
 
