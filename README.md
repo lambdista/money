@@ -12,7 +12,8 @@ $ cd money
 $ sbt package
 ```
 
-You'll find the `jar` under the usual `target/scala-$VERSION` directory where `$VERSION` is the Scala version.
+You just need the *core* `jar` which you can find under the `core/target/scala-$VERSION` directory where `$VERSION` is 
+the Scala version.
 
 ## Usage Example
 Here's a simple usage example:
