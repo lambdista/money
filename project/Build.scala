@@ -9,7 +9,7 @@ object MoneyBuild extends Build {
 
   def commonSettings = Seq(
     moduleName := "money",
-    version := "1.0.0",
+    version := "0.1.0",
     organization := "com.lambdista",
     scalaVersion := "2.11.6",
 
