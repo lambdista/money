@@ -11,7 +11,7 @@ Add the following dependency into your SBT build to use `money`:
 libraryDependencies += "com.lambdista" %% "money" % "0.1.0"
 ```
 
-At the moment the builds are available only for Scala 2.11.x. I'll soon add the Scala 2.10.x support.
+Builds are available for Scala 2.11.x and 2.10.x.
 
 ## Build
 This project is managed with [SBT](http://www.scala-sbt.org/) so it can be built using:
