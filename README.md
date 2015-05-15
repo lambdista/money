@@ -7,7 +7,7 @@ by transparently doing all internal conversions. The conversion map is injected 
 Binary release artifacts are published to the [Sonatype OSS Repository Hosting service](https://oss.sonatype.org). 
 Add the following dependency into your SBT build to use `money`:
 
-```
+```scala
 libraryDependencies += "com.lambdista" %% "money" % "0.1.0"
 ```
 
