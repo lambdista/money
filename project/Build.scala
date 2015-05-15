@@ -12,6 +12,30 @@ object MoneyBuild extends Build {
     version := "0.1.0",
     organization := "com.lambdista",
     scalaVersion := "2.11.6",
+    publishMavenStyle := true,
+    publishTo := {
+      val nexus = "https://oss.sonatype.org/"
+      if (isSnapshot.value)
+        Some("snapshots" at nexus + "content/repositories/snapshots")
+      else
+        Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    },
+    pomIncludeRepository := { _ => false },
+    licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
+    homepage := Some(url("https://github.com/lambdista/money")),
+    pomExtra := (
+      <scm>
+        <url>git@github.com:lambdista/money.git</url>
+        <connection>scm:git:git@github.com:lambdista/money.git</connection>
+      </scm>
+        <developers>
+          <developer>
+            <id>lambdista</id>
+            <name>Alessandro Lacava</name>
+            <url>http://www.alessandrolacava.com</url>
+          </developer>
+        </developers>),
+    credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
 
     (unmanagedSourceDirectories in Compile) <<= (scalaSource in Compile)(Seq(_)),
     (unmanagedSourceDirectories in Test) <<= (scalaSource in Test)(Seq(_)),
@@ -55,14 +79,14 @@ object MoneyBuild extends Build {
     (unmanagedSourceDirectories in Compile) := Nil,
     (unmanagedSourceDirectories in Test) := Nil,
 
-    publish :=(),
-    publishLocal :=()
+    publish := {},
+    publishLocal := {}
     )
     )
 
   lazy val core = (project
     settings (commonSettings: _*)
-    settings (
+    settings(
     moduleName := "money",
 
     libraryDependencies ++= Seq(
@@ -76,7 +100,7 @@ object MoneyBuild extends Build {
   lazy val examples = (project in file("examples")
     dependsOn core
     settings (commonSettings: _*)
-    settings (
+    settings(
     moduleName := "money-examples",
     mainClass in(Compile, run) := Some("com.lambdista.money.example.Usage")
     )

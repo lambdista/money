@@ -3,6 +3,16 @@
 This Domain-Specific Language (DSL) lets you perform operations among different currencies,
 by transparently doing all internal conversions. The conversion map is injected implicitly by the client code.
 
+## Using Money
+Binary release artifacts are published to the [Sonatype OSS Repository Hosting service](https://oss.sonatype.org). 
+Add the following dependency into your SBT build to use `money`:
+
+```
+libraryDependencies += "com.lambdista" %% "money" % "0.1.0"
+```
+
+At the moment the builds are available only for Scala 2.11.x. I'll soon add the Scala 2.10.x support.
+
 ## Build
 This project is managed with [SBT](http://www.scala-sbt.org/) so it can be built using:
 
