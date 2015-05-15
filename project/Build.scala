@@ -5,7 +5,6 @@ object MoneyBuild extends Build {
 
   lazy val specs2version = "2.4.12"
   lazy val logBackVersion = "1.1.2"
-  lazy val scalaLoggingVersion = "3.1.0"
 
   def commonSettings = Seq(
     moduleName := "money",
@@ -90,8 +89,7 @@ object MoneyBuild extends Build {
     moduleName := "money",
 
     libraryDependencies ++= Seq(
-      "ch.qos.logback" % "logback-classic" % logBackVersion,
-      "com.typesafe.scala-logging" %% "scala-logging" % scalaLoggingVersion
+      "ch.qos.logback" % "logback-classic" % logBackVersion
     )
     )
     )

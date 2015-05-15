@@ -1,7 +1,6 @@
 package com.lambdista.money
 
-import com.typesafe.scalalogging.Logger
-import org.slf4j.LoggerFactory
+import com.lambdista.util.Logger
 
 /**
  * This class is responsible for performing `Currency` conversions.
@@ -11,7 +10,7 @@ import org.slf4j.LoggerFactory
  */
 case class Converter(conversion: Conversion) extends {
 
-  private val logger = Logger(LoggerFactory.getLogger(this.getClass))
+  private val logger = Logger(this.getClass)
 
   /**
    * Converts from one `Currency` to the other.

@@ -1,11 +1,9 @@
 package com.lambdista.money
 
-import org.slf4j.LoggerFactory
-
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
 
-import com.typesafe.scalalogging.{Logger, LazyLogging}
+import com.lambdista.util.Logger
 
 import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
 
@@ -21,7 +19,7 @@ import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
  */
 case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Converter) {
 
-  private val logger = Logger(LoggerFactory.getLogger(this.getClass))
+  private val logger = Logger(this.getClass)
 
   /**
    * Converts this money to another money represented using otherCurrency
