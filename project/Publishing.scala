@@ -26,10 +26,6 @@ object Publishing extends SonatypePublishing(MoneyBuild) {
 }
 
 abstract class SonatypePublishing(build: Build) {
-
-  val ossSnapshots = "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
-  val ossStaging = "Sonatype OSS Staging" at "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-
   val projectUrl: String
   val developerId: String
   val developerName: String

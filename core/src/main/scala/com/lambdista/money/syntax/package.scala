@@ -35,4 +35,5 @@ package object syntax {
     def apply(currency: Currency)(implicit converter: Converter): Money = (value: BigDecimal).apply(currency)
   }
 
+  implicit def numericMoney(implicit converter: Converter) = new NumericMoney(DEFAULT_CURRENCY)
 }

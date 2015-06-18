@@ -18,9 +18,8 @@ package com.lambdista.money
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
 
-import com.lambdista.util.Logger
-
 import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
+import com.lambdista.util.Logger
 
 /**
  * This is the main class of the lib. A Money is represented by its `amount` and `currency`.
@@ -32,8 +31,7 @@ import com.lambdista.money.{toFormattedString => bigDecimalToFormattedString}
  * @author Alessandro Lacava
  * @since 2014-10-27
  */
-case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Converter) {
-
+case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Converter) extends Ordered[Money] {
   private val logger = Logger(this.getClass)
 
   /**
@@ -53,194 +51,118 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Con
   val to: Currency => Money = apply(_)
 
   /**
-   * Adds this money to thatMoney. The result is expressed in terms of this money's currency.
+   * Adds this money to that. The result is expressed in terms of this money's currency.
    *
-   * @param thatMoney the money to sum to this money
-   * @return a new object which is the result of summing this money to thatMoney after converting thatMoney to this
+   * @param that the money to sum to this money
+   * @return a new object which is the result of summing this money to that after converting that to this
    *         money's currency
    */
-  def +(thatMoney: Money): Money = {
-    logger.debug(s"Adding $this to $thatMoney")
-    performOperation(thatMoney, _ + _)
+  def +(that: Money): Money = {
+    logger.debug(s"Adding $this to $that")
+    performOperation(that, _ + _)
   }
 
   /**
    * Adds amount to this money.
    *
-   * @param thatAmount the amount to sum to this money
+   * @param that the amount to sum to this money
    * @return a new object which is the result of summing amount to this money
    */
-  def +(thatAmount: BigDecimal): Money = this + Money(thatAmount, this.currency)
+  def +(that: BigDecimal): Money = this + Money(that, this.currency)
 
   /**
-   * Subtracts thatMoney from this money. The result is expressed in terms of this money's currency.
+   * Subtracts that from this money. The result is expressed in terms of this money's currency.
    *
-   * @param thatMoney the money to subtract from this money
-   * @return a new object which is the result of subtracting thatMoney from this money after converting thatMoney to this
+   * @param that the money to subtract from this money
+   * @return a new object which is the result of subtracting that from this money after converting that to this
    *         money's currency
    */
-  def -(thatMoney: Money): Money = {
-    logger.debug(s"Subtracting $this from $thatMoney")
-    performOperation(thatMoney, _ - _)
+  def -(that: Money): Money = {
+    logger.debug(s"Subtracting $this from $that")
+    performOperation(that, _ - _)
   }
 
   /**
    * Subtracts amount from this money.
    *
-   * @param thatAmount the amount to sum to this money
+   * @param that the amount to sum to this money
    * @return a new object which is the result of summing amount to this money
    */
-  def -(thatAmount: BigDecimal): Money = this - Money(thatAmount, this.currency)
+  def -(that: BigDecimal): Money = this - Money(that, this.currency)
 
   /**
-   * Multiplies thatMoney by this money. The result is expressed in terms of this money's currency.
+   * Multiplies that by this money. The result is expressed in terms of this money's currency.
    *
-   * @param thatMoney the money to multiply by this money
-   * @return a new object which is the result of multiplying thatMoney by this money after converting thatMoney to this
+   * @param that the money to multiply by this money
+   * @return a new object which is the result of multiplying that by this money after converting that to this
    *         money's currency
    */
-  def *(thatMoney: Money): Money = {
-    logger.debug(s"Multiplying $this by $thatMoney")
-    performOperation(thatMoney, _ * _)
+  def *(that: Money): Money = {
+    logger.debug(s"Multiplying $this by $that")
+    performOperation(that, _ * _)
   }
 
   /**
    * Multiplies amount by this money.
    *
-   * @param thatAmount the amount to multiply by this money
+   * @param that the amount to multiply by this money
    * @return a new object which is the result of multiplying amount to this money
    */
-  def *(thatAmount: BigDecimal): Money = this * Money(thatAmount, this.currency)
+  def *(that: BigDecimal): Money = this * Money(that, this.currency)
 
   /**
-   * Divides this money by thatMoney. The result is expressed in terms of this money's currency.
+   * Divides this money by that. The result is expressed in terms of this money's currency.
    *
-   * @param thatMoney the money to use ad divisor
-   * @return a new object which is the result of dividing this money (dividend) by thatMoney (divisor) after converting
-   *         thatMoney to this money's currency
+   * @param that the money to use ad divisor
+   * @return a new object which is the result of dividing this money (dividend) by that (divisor) after converting
+   *         that to this money's currency
    */
-  def /(thatMoney: Money): Money = {
-    logger.debug(s"Dividing $this by $thatMoney")
-    performOperation(thatMoney, _ / _)
+  def /(that: Money): Money = {
+    logger.debug(s"Dividing $this by $that")
+    performOperation(that, _ / _)
   }
 
   /**
    * Divides amount by this money.
    *
-   * @param thatAmount the amount to multiply by this money
+   * @param that the amount to multiply by this money
    * @return a new object which is the result of multiplying amount to this money
    */
-  def /(thatAmount: BigDecimal): Money = this / Money(thatAmount, this.currency)
+  def /(that: BigDecimal): Money = this / Money(that, this.currency)
 
   /**
-   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
-   *
-   * @param thatAmount the amount to compare this object with.
-   * @return true if this amount is greater than `thatAmount`, false otherwise.
-   */
-  def >(thatAmount: BigDecimal): Boolean = this.amount > thatAmount
-
-  /**
-   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
-   *
-   * @param thatAmount the amount to compare this object with.
-   * @return true if this amount is greater than or equal to `thatAmount`, false otherwise.
-   */
-  def >=(thatAmount: BigDecimal): Boolean = this.amount >= thatAmount
-
-  /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * Compares this `Money` with `that`. The comparison is made between the amounts after normalizing both `Money`
    * objects to the same currency.
    *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @return true if this `Money` is lesser than `thatMoney`, false otherwise.
+   * @param that the `Money` object to compare this object with.
+   * @return true if this `Money` is not equal to `that`, false otherwise.
    */
-  def <(thatMoney: Money): Boolean = !(this >= thatMoney)
+  def !=(that: Money): Boolean = !(this == that)
 
   /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
+   * Compares this `Money` with `that`. The comparison is made between the amounts after normalizing both `Money`
    * objects to the same currency.
    *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @return true if this `Money` is greater than or equal to `thatMoney`, false otherwise.
+   * @param that the `Money` object to compare this object with.
+   * @return true if this `Money` is equal to `that`, false otherwise.
    */
-  def >=(thatMoney: Money): Boolean = compare(thatMoney, _ >= _)
+  def ==(that: Money): Boolean = compare(that) == 0
 
   /**
-   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
+   * Compares this `Money` with `that`. The comparison is made between this amount and `that`
    *
-   * @param thatAmount the amount to compare this object with.
-   * @return true if this amount is lesser than `thatAmount`, false otherwise.
+   * @param that the amount to compare this object with.
+   * @return true if this amount is not equal to `that`, false otherwise.
    */
-  def <(thatAmount: BigDecimal): Boolean = this.amount < thatAmount
+  def !=(that: BigDecimal): Boolean = !(this == that)
 
   /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
+   * Compares this `Money` with `that`. The comparison is made between this amount and `that`
    *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @return true if this `Money` is lesser than or equal to `thatMoney`, false otherwise.
+   * @param that the amount to compare this object with.
+   * @return true if this amount is equal to `that`, false otherwise.
    */
-  def <=(thatMoney: Money): Boolean = !(this > thatMoney)
-
-  /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
-   *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @return true if this `Money` is greater than `thatMoney`, false otherwise.
-   */
-  def >(thatMoney: Money): Boolean = compare(thatMoney, _ > _)
-
-  private def compare(thatMoney: Money, comparisonFunc: (BigDecimal, BigDecimal) => Boolean): Boolean = {
-    val thisAmount = this.amount
-    val thatAmount = converter.convert(thatMoney.currency, this.currency) * thatMoney.amount
-    logger.debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, thatAmount: ${bigDecimalToFormattedString(thatAmount)}")
-
-    comparisonFunc(thisAmount, thatAmount)
-  }
-
-  /**
-   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
-   *
-   * @param thatAmount the amount to compare this object with.
-   * @return true if this amount is lesser than or equal to `thatAmount`, false otherwise.
-   */
-  def <=(thatAmount: BigDecimal): Boolean = this.amount <= thatAmount
-
-  /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
-   *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @return true if this `Money` is not equal to `thatMoney`, false otherwise.
-   */
-  def !==(thatMoney: Money): Boolean = !(this === thatMoney)
-
-  /**
-   * Compares this `Money` with `thatMoney`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
-   *
-   * @param thatMoney the `Money` object to compare this object with.
-   * @return true if this `Money` is equal to `thatMoney`, false otherwise.
-   */
-  def ===(thatMoney: Money): Boolean = compare(thatMoney, _ == _)
-
-  /**
-   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
-   *
-   * @param thatAmount the amount to compare this object with.
-   * @return true if this amount is not equal to `thatAmount`, false otherwise.
-   */
-  def !==(thatAmount: BigDecimal): Boolean = !(this === thatAmount)
-
-  /**
-   * Compares this `Money` with `thatAmount`. The comparison is made between this amount and `thatAmount`
-   *
-   * @param thatAmount the amount to compare this object with.
-   * @return true if this amount is equal to `thatAmount`, false otherwise.
-   */
-  def ===(thatAmount: BigDecimal): Boolean = this.amount == thatAmount
+  def ==(that: BigDecimal): Boolean = this.amount == that
 
   /**
    * Rounds this `Money` to the given number of `decimalDigits` using the provided `roundingMode`
@@ -267,10 +189,23 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Con
     s"${bigDecimalToFormattedString(amount, decimalDigits)} ${currency.toString}"
   }
 
-  private def performOperation(thatMoney: Money, operation: (BigDecimal, BigDecimal) => BigDecimal): Money = {
-    thatMoney match {
+  private def performOperation(that: Money, operation: (BigDecimal, BigDecimal) => BigDecimal): Money = {
+    that match {
       case Money(v, c) if c == currency => Money(operation(amount, v), currency)
-      case Money(v, c) => performOperation(thatMoney.to(currency), operation)
+      case Money(v, c) => performOperation(that.to(currency), operation)
     }
+  }
+
+  /**
+   *
+   * @param that
+   * @return
+   */
+  override def compare(that: Money): Int = {
+    val thisAmount = this.amount
+    val thatAmount = converter.convert(that.currency, this.currency) * that.amount
+    logger.debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, that: ${bigDecimalToFormattedString(thatAmount)}")
+
+    thisAmount.compare(thatAmount)
   }
 }

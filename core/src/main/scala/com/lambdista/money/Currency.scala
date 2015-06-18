@@ -26,7 +26,6 @@ trait Currency {
 }
 
 object Currency {
-
   val $ = USD
 
   /**
@@ -1661,5 +1660,4 @@ object Currency {
 
     override val toString = getCode
   }
-
 }
