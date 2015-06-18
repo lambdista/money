@@ -26,14 +26,14 @@ object Publishing extends SonatypePublishing(MoneyBuild) {
 }
 
 abstract class SonatypePublishing(build: Build) {
-  val projectUrl: String
-  val developerId: String
-  val developerName: String
-  val developerUrl: String
-  val licenseName: String
-  val licenseUrl: String
-  val scmUrl = projectUrl
-  val scmConnection = "scm:git:" + scmUrl
+  def projectUrl: String
+  def developerId: String
+  def developerName: String
+  def developerUrl: String
+  def licenseName: String
+  def licenseUrl: String
+  def scmUrl = projectUrl
+  def scmConnection = "scm:git:" + scmUrl
 
   def settings: Seq[Setting[_]] = Seq(
     publishMavenStyle := true,

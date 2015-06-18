@@ -8,6 +8,7 @@ tmp/
 logs/
 *.sh
 nohup.out
+RELEASE_NOTES.txt
 
 # Eclipse
 .classpath
@@ -19,3 +20,4 @@ nohup.out
 .idea_modules
 *.iml
 *.iws
+
