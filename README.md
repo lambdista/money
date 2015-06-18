@@ -8,10 +8,10 @@ Binary release artifacts are published to the [Sonatype OSS Repository Hosting s
 Add the following dependency into your SBT build to use `money`:
 
 ```scala
-libraryDependencies += "com.lambdista" %% "money" % "0.1.0"
+libraryDependencies += "com.lambdista" %% "money" % moneyVersion
 ```
 
-Builds are available for Scala 2.11.x and 2.10.x.
+where `moneyVersion` is the version you want to use. Builds are available for Scala 2.11.x and 2.10.x.
 
 ## Build
 This project is managed with [SBT](http://www.scala-sbt.org/) so it can be built using:
