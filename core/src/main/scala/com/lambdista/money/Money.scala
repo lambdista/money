@@ -131,30 +131,12 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Con
   def /(that: BigDecimal): Money = this / Money(that, this.currency)
 
   /**
-   * Compares this `Money` with `that`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
-   *
-   * @param that the `Money` object to compare this object with.
-   * @return true if this `Money` is not equal to `that`, false otherwise.
-   */
-  def !=(that: Money): Boolean = !(this == that)
-
-  /**
-   * Compares this `Money` with `that`. The comparison is made between the amounts after normalizing both `Money`
-   * objects to the same currency.
-   *
-   * @param that the `Money` object to compare this object with.
-   * @return true if this `Money` is equal to `that`, false otherwise.
-   */
-  def ==(that: Money): Boolean = compare(that) == 0
-
-  /**
    * Compares this `Money` with `that`. The comparison is made between this amount and `that`
    *
    * @param that the amount to compare this object with.
    * @return true if this amount is not equal to `that`, false otherwise.
    */
-  def !=(that: BigDecimal): Boolean = !(this == that)
+  def !==(that: BigDecimal): Boolean = !(this === that)
 
   /**
    * Compares this `Money` with `that`. The comparison is made between this amount and `that`
@@ -162,7 +144,7 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Con
    * @param that the amount to compare this object with.
    * @return true if this amount is equal to `that`, false otherwise.
    */
-  def ==(that: BigDecimal): Boolean = this.amount == that
+  def ===(that: BigDecimal): Boolean = this.amount == that
 
   /**
    * Rounds this `Money` to the given number of `decimalDigits` using the provided `roundingMode`
@@ -197,15 +179,17 @@ case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Con
   }
 
   /**
+   * Compares this `Money` object with `that`.
    *
-   * @param that
-   * @return
+   * @param that the other `Money` object
+   * @return a number < 1 if this < that, a number > 1 if this > that, 0 if they are equal.
    */
   override def compare(that: Money): Int = {
     val thisAmount = this.amount
     val thatAmount = converter.convert(that.currency, this.currency) * that.amount
-    logger.debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, that: ${bigDecimalToFormattedString(thatAmount)}")
+    logger.debug(s"thisAmount pure: $thisAmount, thatAmount pure: $thatAmount")
+    logger.debug(s"thisAmount: ${bigDecimalToFormattedString(thisAmount)}, thatAmount: ${bigDecimalToFormattedString(thatAmount)}")
 
-    thisAmount.compare(thatAmount)
+    thisAmount compare thatAmount
   }
 }

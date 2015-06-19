@@ -29,9 +29,12 @@ import com.lambdista.money.syntax._
  */
 class MoneySpec extends Specification {
   val conversion: Conversion = Map(
-    (GBP, EUR) -> 1.39,
-    (EUR, USD) -> 1.08,
-    (GBP, USD) -> 1.50
+    (EUR, USD) -> 1.13,
+    (EUR, GBP) -> 0.71,
+    (USD, EUR) -> 0.88,
+    (USD, GBP) -> 0.63,
+    (GBP, EUR) -> 1.40,
+    (GBP, USD) -> 1.59
   )
 
   implicit val converter = Converter(conversion)
@@ -43,10 +46,12 @@ class MoneySpec extends Specification {
 
   override def is: Fragments = s2"""
     Test for the Money class using the following conversions:
-
-    |    (GBP, EUR) -> 1.39,
-    |    (EUR, USD) -> 1.08,
-    |    (GBP, USD) -> 1.50
+   |    (EUR, USD) -> 1.13,
+   |    (EUR, GBP) -> 0.71,
+   |    (USD, EUR) -> 0.88,
+   |    (USD, GBP) -> 0.63,
+   |    (GBP, EUR) -> 1.40,
+   |    (GBP, USD) -> 1.59
       -------------------------------------------------------------------------------
 
       100(USD) + 200(USD) == 300(USD) must be true                               $e1
@@ -67,23 +72,23 @@ class MoneySpec extends Specification {
 
       100(USD) > 99(EUR) must be false                                           $e9
 
-      testNumericSumWithMoney(100(USD), 200(EUR)) == 316(USD) must be true     $e10
+      testNumericSumWithMoney(100(USD), 200(EUR)) == 316(USD) must be true       $e10
 
   """
 
   def e1 = 100(USD) + 200(USD) == 300(USD) must beTrue
 
-  def e2 = (100.001(USD) + 200(EUR) to GBP).round(5) == 210.66733(GBP) must beTrue
+  def e2 = (100.001(USD) + 200(EUR) to GBP).round(5) == 205.38063(GBP) must beTrue
 
-  def e3 = (100(USD) + 210.4(EUR) to EUR).round(5) == 302.99259(EUR) must beTrue
+  def e3 = (100(USD) + 210.4(EUR) to EUR).round(5) == 297.22176(EUR) must beTrue
 
-  def e4 = exprToGBP == 210.66733(GBP) must beTrue
+  def e4 = exprToGBP == 205.38063(GBP) must beTrue
 
   def e5 = 100(USD) + 23.560 == 123.56(USD) must beTrue
 
   def e6 = 100(USD) * 23 == 2300(USD) must beTrue
 
-  def e7 = 100(usd) * 23(eur) == 2484(USD) must beTrue
+  def e7 = 100(usd) * 23(eur) == 2599(USD) must beTrue
 
   def e8 = (100(USD) / 23).round(5) == 4.34783(USD) must beTrue
 
@@ -91,5 +96,5 @@ class MoneySpec extends Specification {
 
   def testNumericSumWithMoney[T : Numeric](a: T, b: T): T = implicitly[Numeric[T]].plus(a, b)
 
-  def e10 = testNumericSumWithMoney(100(USD), 200(EUR)) == 316(USD) must beTrue
+  def e10 = testNumericSumWithMoney(100(USD), 200(EUR)) == 326(USD) must beTrue
 }

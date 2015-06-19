@@ -9,7 +9,7 @@ object MoneyBuild extends Build {
 
   def commonSettings = Seq(
     moduleName := "money",
-    version := "0.2.0",
+    version := "0.3.0",
     organization := "com.lambdista",
     scalaVersion := projectScalaVersion,
     crossScalaVersions := Seq(projectScalaVersion, "2.10.4"),
@@ -33,9 +33,12 @@ object MoneyBuild extends Build {
         |import com.lambdista.money.Currency._
         |import com.lambdista.money.syntax._
         |  val conversion: Conversion = Map(
-        |    (GBP, EUR) -> 1.39,
-        |    (EUR, USD) -> 1.08,
-        |    (GBP, USD) -> 1.50
+        |    (EUR, USD) -> 1.13,
+        |    (EUR, GBP) -> 0.71,
+        |    (USD, EUR) -> 0.88,
+        |    (USD, GBP) -> 0.63,
+        |    (GBP, EUR) -> 1.40,
+        |    (GBP, USD) -> 1.59
         |  )
         |
         |implicit val converter = Converter(conversion)""".stripMargin

@@ -37,7 +37,7 @@ case class Converter(conversion: Conversion) extends {
   def convert(from: Currency, to: Currency): BigDecimal = {
     if (from == to) 1
     else {
-      val out = conversion.getOrElse((from, to), 1 / conversion((to, from)))
+      val out = conversion((from, to))
       logger.debug(s"Conversion applied (1 $from = ${toFormattedString(out)} $to)")
       out
     }
