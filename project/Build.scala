@@ -28,8 +28,6 @@ object MoneyBuild extends Build {
     initialCommands in console :=
       """
         |import com.lambdista.money._
-        |import com.lambdista.money.Currency._
-        |import com.lambdista.money.syntax._
         |  val conversion: Conversion = Map(
         |    (EUR, USD) -> 1.13,
         |    (EUR, GBP) -> 0.71,

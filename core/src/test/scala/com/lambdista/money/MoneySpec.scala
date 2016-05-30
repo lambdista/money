@@ -18,9 +18,6 @@ package com.lambdista.money
 import org.specs2.Specification
 import org.specs2.specification.Fragments
 
-import com.lambdista.money.Currency._
-import com.lambdista.money.syntax._
-
 /**
  * Specification test for the [[com.lambdista.money.Money]] class
  *

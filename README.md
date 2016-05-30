@@ -33,8 +33,6 @@ Here's a simple usage example:
 
 ```scala
 import com.lambdista.money._
-import com.lambdista.money.Currency._
-import com.lambdista.money.syntax._
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -101,13 +99,14 @@ This will automatically fire the Scala's REPL and run the following commands for
 
 ```scala
 import com.lambdista.money._
-import com.lambdista.money.Currency._
-import com.lambdista.money.syntax._
 
 val conversion: Conversion = Map(
-  (GBP, EUR) -> 1.270,
-  (EUR, USD) -> 1.268,
-  (GBP, USD) -> 1.611
+  (EUR, USD) -> 1.13,
+  (EUR, GBP) -> 0.71,
+  (USD, EUR) -> 0.88,
+  (USD, GBP) -> 0.63,
+  (GBP, EUR) -> 1.40,
+  (GBP, USD) -> 1.59
 )
 
 implicit val converter = Converter(conversion)
@@ -117,14 +116,13 @@ This way you can start playing with the DSL expressions (e.g.: `100(USD) + 90(EU
 and the conversion map. Of course if you need to use your own conversion you can redefine it.
 
 ## Scala's Numeric type class implementation ##
-In version 0.2.0 I added the implementation of `Numeric` for `Money`. You can get the default implicit `Numeric[Money]` 
-with the `syntax` import:
+When using the following import:
 
 ```scala
-import com.lambdista.money.syntax._
+import com.lambdista.money._
 ```
 
-Note that the default implementation is the following:
+you get the default implicit for `Numeric[Money]` whose implementation is as follows:
 
 ```scala
 implicit def numericMoney(implicit converter: Converter) = new NumericMoney(DEFAULT_CURRENCY)
@@ -137,7 +135,8 @@ def fromInt(x: Int): Money
 ```
 
 That is, in order to create a `Money` object you need a `Currency`. 
-If you intend to use a different currency then define your own implicit `Numeric[Money]`, e.g.:
+
+If you intend to use a different currency you can define your own implicit `Numeric[Money]`, e.g.:
 
 ```scala
 implicit def numericMoney(implicit converter: Converter) = new NumericMoney(EUR)

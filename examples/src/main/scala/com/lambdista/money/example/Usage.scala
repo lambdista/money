@@ -1,8 +1,6 @@
 package com.lambdista.money.example
 
-import com.lambdista.money.Currency._
 import com.lambdista.money._
-import com.lambdista.money.syntax._
 
 /**
   * Usage example
@@ -11,9 +9,7 @@ import com.lambdista.money.syntax._
   * @since 2014-10-27
   */
 object Usage {
-
   def main(args: Array[String]): Unit = {
-
     val conversion: Conversion = Map(
         (EUR, USD) -> 1.13,
         (EUR, GBP) -> 0.71,

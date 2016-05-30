@@ -15,15 +15,13 @@
  */
 package com.lambdista.money
 
-import com.lambdista.money.syntax._
-
 /**
   * `Numeric` implementation for [[com.lambdista.money.Money]]
   *
   * @author Alessandro Lacava 
   * @since 2015-06-18
   */
-class NumericMoney(defaultCurrency: Currency)(implicit converter: Converter)
+class NumericMoney(currency: Currency)(implicit converter: Converter)
     extends Numeric[Money] {
   override def plus(x: Money, y: Money): Money = x + y
 
@@ -35,7 +33,7 @@ class NumericMoney(defaultCurrency: Currency)(implicit converter: Converter)
 
   override def negate(x: Money): Money = Money(-x.amount, x.currency)
 
-  override def fromInt(x: Int): Money = x(defaultCurrency)
+  override def fromInt(x: Int): Money = x(currency)
 
   override def toLong(x: Money): Long = x.amount.toLong
 

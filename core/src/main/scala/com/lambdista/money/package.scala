@@ -20,8 +20,6 @@ import scala.math.BigDecimal.RoundingMode.RoundingMode
 
 import java.text.DecimalFormat
 
-import com.lambdista.money.Currency.USD
-
 /**
   * This package object contains utility functions and type aliases
   *
@@ -29,7 +27,7 @@ import com.lambdista.money.Currency.USD
   * @since 2014-10-27
   */
 package object money {
-  val DEFAULT_CURRENCY = USD
+  implicit val DEFAULT_CURRENCY = USD
 
   type Conversion = Map[(Currency, Currency), BigDecimal]
 
@@ -55,4 +53,21 @@ package object money {
 
     df.format(value.setScale(decimalDigits, roundingMode).underlying())
   }
+
+  /**
+    *  Extensions for this DSL.
+    */
+  implicit class BigDecimalOps(val value: BigDecimal) extends AnyVal {
+    def apply(currency: Currency)(implicit converter: Converter): Money = Money(value, currency)
+  }
+
+  implicit class IntOps(val value: Int) extends AnyVal {
+    def apply(currency: Currency)(implicit converter: Converter): Money = (value: BigDecimal).apply(currency)
+  }
+
+  implicit class DoubleOps(val value: Double) extends AnyVal {
+    def apply(currency: Currency)(implicit converter: Converter): Money = (value: BigDecimal).apply(currency)
+  }
+
+  implicit def numericMoney(implicit converter: Converter) = new NumericMoney(DEFAULT_CURRENCY)
 }
