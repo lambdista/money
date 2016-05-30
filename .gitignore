@@ -7,8 +7,9 @@ data/
 tmp/
 logs/
 *.sh
-nohup.out
-RELEASE_NOTES.txt
+RELEASE_NOTES.md
+.bumpversion.cfg
+.scalafmt
 
 # Eclipse
 .classpath

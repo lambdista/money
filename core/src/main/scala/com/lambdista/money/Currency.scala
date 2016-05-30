@@ -16,11 +16,11 @@
 package com.lambdista.money
 
 /**
- * Generic Currency
- *
- * @author Alessandro Lacava 
- * @since 2014-10-27
- */
+  * Generic Currency
+  *
+  * @author Alessandro Lacava 
+  * @since 2014-10-27
+  */
 trait Currency {
   def getCode: String
 }
@@ -29,12 +29,12 @@ object Currency {
   val $ = USD
 
   /**
-   * Builds a [[com.lambdista.money.Currency]] object by decoding its corresponding code. It's case-insensitive so,
-   * for example, passing "USD" or "usd" always yields a USD object.
-   *
-   * @param s the string to decode
-   * @return an object of type [[com.lambdista.money.Currency]]
-   */
+    * Builds a [[com.lambdista.money.Currency]] object by decoding its corresponding code. It's case-insensitive so,
+    * for example, passing "USD" or "usd" always yields a USD object.
+    *
+    * @param s the string to decode
+    * @return an object of type [[com.lambdista.money.Currency]]
+    */
   def apply(s: String): Currency = s.toUpperCase match {
     case "AED" => AED
     case "AFN" => AFN
@@ -204,8 +204,8 @@ object Currency {
   }
 
   /**
-   * United Arab Emirates Dirham
-   */
+    * United Arab Emirates Dirham
+    */
   object AED extends Currency {
     val getCode: String = "AED"
 
@@ -213,8 +213,8 @@ object Currency {
   }
 
   /**
-   * Afghanistan Afghani
-   */
+    * Afghanistan Afghani
+    */
   object AFN extends Currency {
     val getCode: String = "AFN"
 
@@ -222,8 +222,8 @@ object Currency {
   }
 
   /**
-   * Albania Lek
-   */
+    * Albania Lek
+    */
   object ALL extends Currency {
     val getCode: String = "ALL"
 
@@ -231,8 +231,8 @@ object Currency {
   }
 
   /**
-   * Armenia Dram
-   */
+    * Armenia Dram
+    */
   object AMD extends Currency {
     val getCode: String = "AMD"
 
@@ -240,8 +240,8 @@ object Currency {
   }
 
   /**
-   * Netherlands Antilles Guilder
-   */
+    * Netherlands Antilles Guilder
+    */
   object ANG extends Currency {
     val getCode: String = "ANG"
 
@@ -249,8 +249,8 @@ object Currency {
   }
 
   /**
-   * Angola Kwanza
-   */
+    * Angola Kwanza
+    */
   object AOA extends Currency {
     val getCode: String = "AOA"
 
@@ -258,8 +258,8 @@ object Currency {
   }
 
   /**
-   * Argentina Peso
-   */
+    * Argentina Peso
+    */
   object ARS extends Currency {
     val getCode: String = "ARS"
 
@@ -267,8 +267,8 @@ object Currency {
   }
 
   /**
-   * Australia Dollar
-   */
+    * Australia Dollar
+    */
   object AUD extends Currency {
     val getCode: String = "AUD"
 
@@ -276,8 +276,8 @@ object Currency {
   }
 
   /**
-   * Aruba Guilder
-   */
+    * Aruba Guilder
+    */
   object AWG extends Currency {
     val getCode: String = "AWG"
 
@@ -285,8 +285,8 @@ object Currency {
   }
 
   /**
-   * Azerbaijan New Manat
-   */
+    * Azerbaijan New Manat
+    */
   object AZN extends Currency {
     val getCode: String = "AZN"
 
@@ -294,8 +294,8 @@ object Currency {
   }
 
   /**
-   * Bosnia and Herzegovina Convertible Marka
-   */
+    * Bosnia and Herzegovina Convertible Marka
+    */
   object BAM extends Currency {
     val getCode: String = "BAM"
 
@@ -303,8 +303,8 @@ object Currency {
   }
 
   /**
-   * Barbados Dollar
-   */
+    * Barbados Dollar
+    */
   object BBD extends Currency {
     val getCode: String = "BBD"
 
@@ -312,8 +312,8 @@ object Currency {
   }
 
   /**
-   * Bangladesh Taka
-   */
+    * Bangladesh Taka
+    */
   object BDT extends Currency {
     val getCode: String = "BDT"
 
@@ -321,8 +321,8 @@ object Currency {
   }
 
   /**
-   * Bulgaria Lev
-   */
+    * Bulgaria Lev
+    */
   object BGN extends Currency {
     val getCode: String = "BGN"
 
@@ -330,8 +330,8 @@ object Currency {
   }
 
   /**
-   * Bahrain Dinar
-   */
+    * Bahrain Dinar
+    */
   object BHD extends Currency {
     val getCode: String = "BHD"
 
@@ -339,8 +339,8 @@ object Currency {
   }
 
   /**
-   * Burundi Franc
-   */
+    * Burundi Franc
+    */
   object BIF extends Currency {
     val getCode: String = "BIF"
 
@@ -348,8 +348,8 @@ object Currency {
   }
 
   /**
-   * Bermuda Dollar
-   */
+    * Bermuda Dollar
+    */
   object BMD extends Currency {
     val getCode: String = "BMD"
 
@@ -357,8 +357,8 @@ object Currency {
   }
 
   /**
-   * Brunei Darussalam Dollar
-   */
+    * Brunei Darussalam Dollar
+    */
   object BND extends Currency {
     val getCode: String = "BND"
 
@@ -366,8 +366,8 @@ object Currency {
   }
 
   /**
-   * Bolivia Boliviano
-   */
+    * Bolivia Boliviano
+    */
   object BOB extends Currency {
     val getCode: String = "BOB"
 
@@ -375,8 +375,8 @@ object Currency {
   }
 
   /**
-   * Brazil Real
-   */
+    * Brazil Real
+    */
   object BRL extends Currency {
     val getCode: String = "BRL"
 
@@ -384,8 +384,8 @@ object Currency {
   }
 
   /**
-   * Bahamas Dollar
-   */
+    * Bahamas Dollar
+    */
   object BSD extends Currency {
     val getCode: String = "BSD"
 
@@ -393,8 +393,8 @@ object Currency {
   }
 
   /**
-   * Bhutan Ngultrum
-   */
+    * Bhutan Ngultrum
+    */
   object BTN extends Currency {
     val getCode: String = "BTN"
 
@@ -402,8 +402,8 @@ object Currency {
   }
 
   /**
-   * Botswana Pula
-   */
+    * Botswana Pula
+    */
   object BWP extends Currency {
     val getCode: String = "BWP"
 
@@ -411,8 +411,8 @@ object Currency {
   }
 
   /**
-   * Belarus Ruble
-   */
+    * Belarus Ruble
+    */
   object BYR extends Currency {
     val getCode: String = "BYR"
 
@@ -420,8 +420,8 @@ object Currency {
   }
 
   /**
-   * Belize Dollar
-   */
+    * Belize Dollar
+    */
   object BZD extends Currency {
     val getCode: String = "BZD"
 
@@ -429,8 +429,8 @@ object Currency {
   }
 
   /**
-   * Canada Dollar
-   */
+    * Canada Dollar
+    */
   object CAD extends Currency {
     val getCode: String = "CAD"
 
@@ -438,8 +438,8 @@ object Currency {
   }
 
   /**
-   * Congo/Kinshasa Franc
-   */
+    * Congo/Kinshasa Franc
+    */
   object CDF extends Currency {
     val getCode: String = "CDF"
 
@@ -447,8 +447,8 @@ object Currency {
   }
 
   /**
-   * Switzerland Franc
-   */
+    * Switzerland Franc
+    */
   object CHF extends Currency {
     val getCode: String = "CHF"
 
@@ -456,8 +456,8 @@ object Currency {
   }
 
   /**
-   * Chile Peso
-   */
+    * Chile Peso
+    */
   object CLP extends Currency {
     val getCode: String = "CLP"
 
@@ -465,8 +465,8 @@ object Currency {
   }
 
   /**
-   * China Yuan Renminbi
-   */
+    * China Yuan Renminbi
+    */
   object CNY extends Currency {
     val getCode: String = "CNY"
 
@@ -474,8 +474,8 @@ object Currency {
   }
 
   /**
-   * Colombia Peso
-   */
+    * Colombia Peso
+    */
   object COP extends Currency {
     val getCode: String = "COP"
 
@@ -483,8 +483,8 @@ object Currency {
   }
 
   /**
-   * Costa Rica Colon
-   */
+    * Costa Rica Colon
+    */
   object CRC extends Currency {
     val getCode: String = "CRC"
 
@@ -492,8 +492,8 @@ object Currency {
   }
 
   /**
-   * Cuba Convertible Peso
-   */
+    * Cuba Convertible Peso
+    */
   object CUC extends Currency {
     val getCode: String = "CUC"
 
@@ -501,8 +501,8 @@ object Currency {
   }
 
   /**
-   * Cuba Peso
-   */
+    * Cuba Peso
+    */
   object CUP extends Currency {
     val getCode: String = "CUP"
 
@@ -510,8 +510,8 @@ object Currency {
   }
 
   /**
-   * Cape Verde Escudo
-   */
+    * Cape Verde Escudo
+    */
   object CVE extends Currency {
     val getCode: String = "CVE"
 
@@ -519,8 +519,8 @@ object Currency {
   }
 
   /**
-   * Czech Republic Koruna
-   */
+    * Czech Republic Koruna
+    */
   object CZK extends Currency {
     val getCode: String = "CZK"
 
@@ -528,8 +528,8 @@ object Currency {
   }
 
   /**
-   * Djibouti Franc
-   */
+    * Djibouti Franc
+    */
   object DJF extends Currency {
     val getCode: String = "DJF"
 
@@ -537,8 +537,8 @@ object Currency {
   }
 
   /**
-   * Denmark Krone
-   */
+    * Denmark Krone
+    */
   object DKK extends Currency {
     val getCode: String = "DKK"
 
@@ -546,8 +546,8 @@ object Currency {
   }
 
   /**
-   * Dominican Republic Peso
-   */
+    * Dominican Republic Peso
+    */
   object DOP extends Currency {
     val getCode: String = "DOP"
 
@@ -555,8 +555,8 @@ object Currency {
   }
 
   /**
-   * Algeria Dinar
-   */
+    * Algeria Dinar
+    */
   object DZD extends Currency {
     val getCode: String = "DZD"
 
@@ -564,8 +564,8 @@ object Currency {
   }
 
   /**
-   * Egypt Pound
-   */
+    * Egypt Pound
+    */
   object EGP extends Currency {
     val getCode: String = "EGP"
 
@@ -573,8 +573,8 @@ object Currency {
   }
 
   /**
-   * Eritrea Nakfa
-   */
+    * Eritrea Nakfa
+    */
   object ERN extends Currency {
     val getCode: String = "ERN"
 
@@ -582,8 +582,8 @@ object Currency {
   }
 
   /**
-   * Ethiopia Birr
-   */
+    * Ethiopia Birr
+    */
   object ETB extends Currency {
     val getCode: String = "ETB"
 
@@ -591,8 +591,8 @@ object Currency {
   }
 
   /**
-   * Euro Member Countries
-   */
+    * Euro Member Countries
+    */
   object EUR extends Currency {
     val getCode: String = "EUR"
 
@@ -600,8 +600,8 @@ object Currency {
   }
 
   /**
-   * Fiji Dollar
-   */
+    * Fiji Dollar
+    */
   object FJD extends Currency {
     val getCode: String = "FJD"
 
@@ -609,8 +609,8 @@ object Currency {
   }
 
   /**
-   * Falkland Islands (Malvinas) Pound
-   */
+    * Falkland Islands (Malvinas) Pound
+    */
   object FKP extends Currency {
     val getCode: String = "FKP"
 
@@ -618,8 +618,8 @@ object Currency {
   }
 
   /**
-   * United Kingdom Pound
-   */
+    * United Kingdom Pound
+    */
   object GBP extends Currency {
     val getCode: String = "GBP"
 
@@ -627,8 +627,8 @@ object Currency {
   }
 
   /**
-   * Georgia Lari
-   */
+    * Georgia Lari
+    */
   object GEL extends Currency {
     val getCode: String = "GEL"
 
@@ -636,8 +636,8 @@ object Currency {
   }
 
   /**
-   * Guernsey Pound
-   */
+    * Guernsey Pound
+    */
   object GGP extends Currency {
     val getCode: String = "GGP"
 
@@ -645,8 +645,8 @@ object Currency {
   }
 
   /**
-   * Ghana Cedi
-   */
+    * Ghana Cedi
+    */
   object GHS extends Currency {
     val getCode: String = "GHS"
 
@@ -654,8 +654,8 @@ object Currency {
   }
 
   /**
-   * Gibraltar Pound
-   */
+    * Gibraltar Pound
+    */
   object GIP extends Currency {
     val getCode: String = "GIP"
 
@@ -663,8 +663,8 @@ object Currency {
   }
 
   /**
-   * Gambia Dalasi
-   */
+    * Gambia Dalasi
+    */
   object GMD extends Currency {
     val getCode: String = "GMD"
 
@@ -672,8 +672,8 @@ object Currency {
   }
 
   /**
-   * Guinea Franc
-   */
+    * Guinea Franc
+    */
   object GNF extends Currency {
     val getCode: String = "GNF"
 
@@ -681,8 +681,8 @@ object Currency {
   }
 
   /**
-   * Guatemala Quetzal
-   */
+    * Guatemala Quetzal
+    */
   object GTQ extends Currency {
     val getCode: String = "GTQ"
 
@@ -690,8 +690,8 @@ object Currency {
   }
 
   /**
-   * Guyana Dollar
-   */
+    * Guyana Dollar
+    */
   object GYD extends Currency {
     val getCode: String = "GYD"
 
@@ -699,8 +699,8 @@ object Currency {
   }
 
   /**
-   * Hong Kong Dollar
-   */
+    * Hong Kong Dollar
+    */
   object HKD extends Currency {
     val getCode: String = "HKD"
 
@@ -708,8 +708,8 @@ object Currency {
   }
 
   /**
-   * Honduras Lempira
-   */
+    * Honduras Lempira
+    */
   object HNL extends Currency {
     val getCode: String = "HNL"
 
@@ -717,8 +717,8 @@ object Currency {
   }
 
   /**
-   * Croatia Kuna
-   */
+    * Croatia Kuna
+    */
   object HRK extends Currency {
     val getCode: String = "HRK"
 
@@ -726,8 +726,8 @@ object Currency {
   }
 
   /**
-   * Haiti Gourde
-   */
+    * Haiti Gourde
+    */
   object HTG extends Currency {
     val getCode: String = "HTG"
 
@@ -735,8 +735,8 @@ object Currency {
   }
 
   /**
-   * Hungary Forint
-   */
+    * Hungary Forint
+    */
   object HUF extends Currency {
     val getCode: String = "HUF"
 
@@ -744,8 +744,8 @@ object Currency {
   }
 
   /**
-   * Indonesia Rupiah
-   */
+    * Indonesia Rupiah
+    */
   object IDR extends Currency {
     val getCode: String = "IDR"
 
@@ -753,8 +753,8 @@ object Currency {
   }
 
   /**
-   * Israel Shekel
-   */
+    * Israel Shekel
+    */
   object ILS extends Currency {
     val getCode: String = "ILS"
 
@@ -762,8 +762,8 @@ object Currency {
   }
 
   /**
-   * Isle of Man Pound
-   */
+    * Isle of Man Pound
+    */
   object IMP extends Currency {
     val getCode: String = "IMP"
 
@@ -771,8 +771,8 @@ object Currency {
   }
 
   /**
-   * India Rupee
-   */
+    * India Rupee
+    */
   object INR extends Currency {
     val getCode: String = "INR"
 
@@ -780,8 +780,8 @@ object Currency {
   }
 
   /**
-   * Iraq Dinar
-   */
+    * Iraq Dinar
+    */
   object IQD extends Currency {
     val getCode: String = "IQD"
 
@@ -789,8 +789,8 @@ object Currency {
   }
 
   /**
-   * Iran Rial
-   */
+    * Iran Rial
+    */
   object IRR extends Currency {
     val getCode: String = "IRR"
 
@@ -798,8 +798,8 @@ object Currency {
   }
 
   /**
-   * Iceland Krona
-   */
+    * Iceland Krona
+    */
   object ISK extends Currency {
     val getCode: String = "ISK"
 
@@ -807,8 +807,8 @@ object Currency {
   }
 
   /**
-   * Jersey Pound
-   */
+    * Jersey Pound
+    */
   object JEP extends Currency {
     val getCode: String = "JEP"
 
@@ -816,8 +816,8 @@ object Currency {
   }
 
   /**
-   * Jamaica Dollar
-   */
+    * Jamaica Dollar
+    */
   object JMD extends Currency {
     val getCode: String = "JMD"
 
@@ -825,8 +825,8 @@ object Currency {
   }
 
   /**
-   * Jordan Dinar
-   */
+    * Jordan Dinar
+    */
   object JOD extends Currency {
     val getCode: String = "JOD"
 
@@ -834,8 +834,8 @@ object Currency {
   }
 
   /**
-   * Japan Yen
-   */
+    * Japan Yen
+    */
   object JPY extends Currency {
     val getCode: String = "JPY"
 
@@ -843,8 +843,8 @@ object Currency {
   }
 
   /**
-   * Kenya Shilling
-   */
+    * Kenya Shilling
+    */
   object KES extends Currency {
     val getCode: String = "KES"
 
@@ -852,8 +852,8 @@ object Currency {
   }
 
   /**
-   * Kyrgyzstan Som
-   */
+    * Kyrgyzstan Som
+    */
   object KGS extends Currency {
     val getCode: String = "KGS"
 
@@ -861,8 +861,8 @@ object Currency {
   }
 
   /**
-   * Cambodia Riel
-   */
+    * Cambodia Riel
+    */
   object KHR extends Currency {
     val getCode: String = "KHR"
 
@@ -870,8 +870,8 @@ object Currency {
   }
 
   /**
-   * Comoros Franc
-   */
+    * Comoros Franc
+    */
   object KMF extends Currency {
     val getCode: String = "KMF"
 
@@ -879,8 +879,8 @@ object Currency {
   }
 
   /**
-   * Korea (North) Won
-   */
+    * Korea (North) Won
+    */
   object KPW extends Currency {
     val getCode: String = "KPW"
 
@@ -888,8 +888,8 @@ object Currency {
   }
 
   /**
-   * Korea (South) Won
-   */
+    * Korea (South) Won
+    */
   object KRW extends Currency {
     val getCode: String = "KRW"
 
@@ -897,8 +897,8 @@ object Currency {
   }
 
   /**
-   * Kuwait Dinar
-   */
+    * Kuwait Dinar
+    */
   object KWD extends Currency {
     val getCode: String = "KWD"
 
@@ -906,8 +906,8 @@ object Currency {
   }
 
   /**
-   * Cayman Islands Dollar
-   */
+    * Cayman Islands Dollar
+    */
   object KYD extends Currency {
     val getCode: String = "KYD"
 
@@ -915,8 +915,8 @@ object Currency {
   }
 
   /**
-   * Kazakhstan Tenge
-   */
+    * Kazakhstan Tenge
+    */
   object KZT extends Currency {
     val getCode: String = "KZT"
 
@@ -924,8 +924,8 @@ object Currency {
   }
 
   /**
-   * Laos Kip
-   */
+    * Laos Kip
+    */
   object LAK extends Currency {
     val getCode: String = "LAK"
 
@@ -933,8 +933,8 @@ object Currency {
   }
 
   /**
-   * Lebanon Pound
-   */
+    * Lebanon Pound
+    */
   object LBP extends Currency {
     val getCode: String = "LBP"
 
@@ -942,8 +942,8 @@ object Currency {
   }
 
   /**
-   * Sri Lanka Rupee
-   */
+    * Sri Lanka Rupee
+    */
   object LKR extends Currency {
     val getCode: String = "LKR"
 
@@ -951,8 +951,8 @@ object Currency {
   }
 
   /**
-   * Liberia Dollar
-   */
+    * Liberia Dollar
+    */
   object LRD extends Currency {
     val getCode: String = "LRD"
 
@@ -960,8 +960,8 @@ object Currency {
   }
 
   /**
-   * Lesotho Loti
-   */
+    * Lesotho Loti
+    */
   object LSL extends Currency {
     val getCode: String = "LSL"
 
@@ -969,8 +969,8 @@ object Currency {
   }
 
   /**
-   * Lithuania Litas
-   */
+    * Lithuania Litas
+    */
   object LTL extends Currency {
     val getCode: String = "LTL"
 
@@ -978,8 +978,8 @@ object Currency {
   }
 
   /**
-   * Libya Dinar
-   */
+    * Libya Dinar
+    */
   object LYD extends Currency {
     val getCode: String = "LYD"
 
@@ -987,8 +987,8 @@ object Currency {
   }
 
   /**
-   * Morocco Dirham
-   */
+    * Morocco Dirham
+    */
   object MAD extends Currency {
     val getCode: String = "MAD"
 
@@ -996,8 +996,8 @@ object Currency {
   }
 
   /**
-   * Moldova Leu
-   */
+    * Moldova Leu
+    */
   object MDL extends Currency {
     val getCode: String = "MDL"
 
@@ -1005,8 +1005,8 @@ object Currency {
   }
 
   /**
-   * Madagascar Ariary
-   */
+    * Madagascar Ariary
+    */
   object MGA extends Currency {
     val getCode: String = "MGA"
 
@@ -1014,8 +1014,8 @@ object Currency {
   }
 
   /**
-   * Macedonia Denar
-   */
+    * Macedonia Denar
+    */
   object MKD extends Currency {
     val getCode: String = "MKD"
 
@@ -1023,8 +1023,8 @@ object Currency {
   }
 
   /**
-   * Myanmar (Burma) Kyat
-   */
+    * Myanmar (Burma) Kyat
+    */
   object MMK extends Currency {
     val getCode: String = "MMK"
 
@@ -1032,8 +1032,8 @@ object Currency {
   }
 
   /**
-   * Mongolia Tughrik
-   */
+    * Mongolia Tughrik
+    */
   object MNT extends Currency {
     val getCode: String = "MNT"
 
@@ -1041,8 +1041,8 @@ object Currency {
   }
 
   /**
-   * Macau Pataca
-   */
+    * Macau Pataca
+    */
   object MOP extends Currency {
     val getCode: String = "MOP"
 
@@ -1050,8 +1050,8 @@ object Currency {
   }
 
   /**
-   * Mauritania Ouguiya
-   */
+    * Mauritania Ouguiya
+    */
   object MRO extends Currency {
     val getCode: String = "MRO"
 
@@ -1059,8 +1059,8 @@ object Currency {
   }
 
   /**
-   * Mauritius Rupee
-   */
+    * Mauritius Rupee
+    */
   object MUR extends Currency {
     val getCode: String = "MUR"
 
@@ -1068,8 +1068,8 @@ object Currency {
   }
 
   /**
-   * Maldives (Maldive Islands) Rufiyaa
-   */
+    * Maldives (Maldive Islands) Rufiyaa
+    */
   object MVR extends Currency {
     val getCode: String = "MVR"
 
@@ -1077,8 +1077,8 @@ object Currency {
   }
 
   /**
-   * Malawi Kwacha
-   */
+    * Malawi Kwacha
+    */
   object MWK extends Currency {
     val getCode: String = "MWK"
 
@@ -1086,8 +1086,8 @@ object Currency {
   }
 
   /**
-   * Mexico Peso
-   */
+    * Mexico Peso
+    */
   object MXN extends Currency {
     val getCode: String = "MXN"
 
@@ -1095,8 +1095,8 @@ object Currency {
   }
 
   /**
-   * Malaysia Ringgit
-   */
+    * Malaysia Ringgit
+    */
   object MYR extends Currency {
     val getCode: String = "MYR"
 
@@ -1104,8 +1104,8 @@ object Currency {
   }
 
   /**
-   * Mozambique Metical
-   */
+    * Mozambique Metical
+    */
   object MZN extends Currency {
     val getCode: String = "MZN"
 
@@ -1113,8 +1113,8 @@ object Currency {
   }
 
   /**
-   * Namibia Dollar
-   */
+    * Namibia Dollar
+    */
   object NAD extends Currency {
     val getCode: String = "NAD"
 
@@ -1122,8 +1122,8 @@ object Currency {
   }
 
   /**
-   * Nigeria Naira
-   */
+    * Nigeria Naira
+    */
   object NGN extends Currency {
     val getCode: String = "NGN"
 
@@ -1131,8 +1131,8 @@ object Currency {
   }
 
   /**
-   * Nicaragua Cordoba
-   */
+    * Nicaragua Cordoba
+    */
   object NIO extends Currency {
     val getCode: String = "NIO"
 
@@ -1140,8 +1140,8 @@ object Currency {
   }
 
   /**
-   * Norway Krone
-   */
+    * Norway Krone
+    */
   object NOK extends Currency {
     val getCode: String = "NOK"
 
@@ -1149,8 +1149,8 @@ object Currency {
   }
 
   /**
-   * Nepal Rupee
-   */
+    * Nepal Rupee
+    */
   object NPR extends Currency {
     val getCode: String = "NPR"
 
@@ -1158,8 +1158,8 @@ object Currency {
   }
 
   /**
-   * New Zealand Dollar
-   */
+    * New Zealand Dollar
+    */
   object NZD extends Currency {
     val getCode: String = "NZD"
 
@@ -1167,8 +1167,8 @@ object Currency {
   }
 
   /**
-   * Oman Rial
-   */
+    * Oman Rial
+    */
   object OMR extends Currency {
     val getCode: String = "OMR"
 
@@ -1176,8 +1176,8 @@ object Currency {
   }
 
   /**
-   * Panama Balboa
-   */
+    * Panama Balboa
+    */
   object PAB extends Currency {
     val getCode: String = "PAB"
 
@@ -1185,8 +1185,8 @@ object Currency {
   }
 
   /**
-   * Peru Nuevo Sol
-   */
+    * Peru Nuevo Sol
+    */
   object PEN extends Currency {
     val getCode: String = "PEN"
 
@@ -1194,8 +1194,8 @@ object Currency {
   }
 
   /**
-   * Papua New Guinea Kina
-   */
+    * Papua New Guinea Kina
+    */
   object PGK extends Currency {
     val getCode: String = "PGK"
 
@@ -1203,8 +1203,8 @@ object Currency {
   }
 
   /**
-   * Philippines Peso
-   */
+    * Philippines Peso
+    */
   object PHP extends Currency {
     val getCode: String = "PHP"
 
@@ -1212,8 +1212,8 @@ object Currency {
   }
 
   /**
-   * Pakistan Rupee
-   */
+    * Pakistan Rupee
+    */
   object PKR extends Currency {
     val getCode: String = "PKR"
 
@@ -1221,8 +1221,8 @@ object Currency {
   }
 
   /**
-   * Poland Zloty
-   */
+    * Poland Zloty
+    */
   object PLN extends Currency {
     val getCode: String = "PLN"
 
@@ -1230,8 +1230,8 @@ object Currency {
   }
 
   /**
-   * Paraguay Guarani
-   */
+    * Paraguay Guarani
+    */
   object PYG extends Currency {
     val getCode: String = "PYG"
 
@@ -1239,8 +1239,8 @@ object Currency {
   }
 
   /**
-   * Qatar Riyal
-   */
+    * Qatar Riyal
+    */
   object QAR extends Currency {
     val getCode: String = "QAR"
 
@@ -1248,8 +1248,8 @@ object Currency {
   }
 
   /**
-   * Romania New Leu
-   */
+    * Romania New Leu
+    */
   object RON extends Currency {
     val getCode: String = "RON"
 
@@ -1257,8 +1257,8 @@ object Currency {
   }
 
   /**
-   * Serbia Dinar
-   */
+    * Serbia Dinar
+    */
   object RSD extends Currency {
     val getCode: String = "RSD"
 
@@ -1266,8 +1266,8 @@ object Currency {
   }
 
   /**
-   * Russia Ruble
-   */
+    * Russia Ruble
+    */
   object RUB extends Currency {
     val getCode: String = "RUB"
 
@@ -1275,8 +1275,8 @@ object Currency {
   }
 
   /**
-   * Rwanda Franc
-   */
+    * Rwanda Franc
+    */
   object RWF extends Currency {
     val getCode: String = "RWF"
 
@@ -1284,8 +1284,8 @@ object Currency {
   }
 
   /**
-   * Saudi Arabia Riyal
-   */
+    * Saudi Arabia Riyal
+    */
   object SAR extends Currency {
     val getCode: String = "SAR"
 
@@ -1293,8 +1293,8 @@ object Currency {
   }
 
   /**
-   * Solomon Islands Dollar
-   */
+    * Solomon Islands Dollar
+    */
   object SBD extends Currency {
     val getCode: String = "SBD"
 
@@ -1302,8 +1302,8 @@ object Currency {
   }
 
   /**
-   * Seychelles Rupee
-   */
+    * Seychelles Rupee
+    */
   object SCR extends Currency {
     val getCode: String = "SCR"
 
@@ -1311,8 +1311,8 @@ object Currency {
   }
 
   /**
-   * Sudan Pound
-   */
+    * Sudan Pound
+    */
   object SDG extends Currency {
     val getCode: String = "SDG"
 
@@ -1320,8 +1320,8 @@ object Currency {
   }
 
   /**
-   * Sweden Krona
-   */
+    * Sweden Krona
+    */
   object SEK extends Currency {
     val getCode: String = "SEK"
 
@@ -1329,8 +1329,8 @@ object Currency {
   }
 
   /**
-   * Singapore Dollar
-   */
+    * Singapore Dollar
+    */
   object SGD extends Currency {
     val getCode: String = "SGD"
 
@@ -1338,8 +1338,8 @@ object Currency {
   }
 
   /**
-   * Saint Helena Pound
-   */
+    * Saint Helena Pound
+    */
   object SHP extends Currency {
     val getCode: String = "SHP"
 
@@ -1347,8 +1347,8 @@ object Currency {
   }
 
   /**
-   * Sierra Leone Leone
-   */
+    * Sierra Leone Leone
+    */
   object SLL extends Currency {
     val getCode: String = "SLL"
 
@@ -1356,8 +1356,8 @@ object Currency {
   }
 
   /**
-   * Somalia Shilling
-   */
+    * Somalia Shilling
+    */
   object SOS extends Currency {
     val getCode: String = "SOS"
 
@@ -1365,8 +1365,8 @@ object Currency {
   }
 
   /**
-   * Seborga Luigino
-   */
+    * Seborga Luigino
+    */
   object SPL extends Currency {
     val getCode: String = "SPL"
 
@@ -1374,8 +1374,8 @@ object Currency {
   }
 
   /**
-   * Suriname Dollar
-   */
+    * Suriname Dollar
+    */
   object SRD extends Currency {
     val getCode: String = "SRD"
 
@@ -1383,8 +1383,8 @@ object Currency {
   }
 
   /**
-   * São Tomé and Príncipe Dobra
-   */
+    * São Tomé and Príncipe Dobra
+    */
   object STD extends Currency {
     val getCode: String = "STD"
 
@@ -1392,8 +1392,8 @@ object Currency {
   }
 
   /**
-   * El Salvador Colon
-   */
+    * El Salvador Colon
+    */
   object SVC extends Currency {
     val getCode: String = "SVC"
 
@@ -1401,8 +1401,8 @@ object Currency {
   }
 
   /**
-   * Syria Pound
-   */
+    * Syria Pound
+    */
   object SYP extends Currency {
     val getCode: String = "SYP"
 
@@ -1410,8 +1410,8 @@ object Currency {
   }
 
   /**
-   * Swaziland Lilangeni
-   */
+    * Swaziland Lilangeni
+    */
   object SZL extends Currency {
     val getCode: String = "SZL"
 
@@ -1419,8 +1419,8 @@ object Currency {
   }
 
   /**
-   * Thailand Baht
-   */
+    * Thailand Baht
+    */
   object THB extends Currency {
     val getCode: String = "THB"
 
@@ -1428,8 +1428,8 @@ object Currency {
   }
 
   /**
-   * Tajikistan Somoni
-   */
+    * Tajikistan Somoni
+    */
   object TJS extends Currency {
     val getCode: String = "TJS"
 
@@ -1437,8 +1437,8 @@ object Currency {
   }
 
   /**
-   * Turkmenistan Manat
-   */
+    * Turkmenistan Manat
+    */
   object TMT extends Currency {
     val getCode: String = "TMT"
 
@@ -1446,8 +1446,8 @@ object Currency {
   }
 
   /**
-   * Tunisia Dinar
-   */
+    * Tunisia Dinar
+    */
   object TND extends Currency {
     val getCode: String = "TND"
 
@@ -1455,8 +1455,8 @@ object Currency {
   }
 
   /**
-   * Tonga Pa'anga
-   */
+    * Tonga Pa'anga
+    */
   object TOP extends Currency {
     val getCode: String = "TOP"
 
@@ -1464,8 +1464,8 @@ object Currency {
   }
 
   /**
-   * Turkey Lira
-   */
+    * Turkey Lira
+    */
   object TRY extends Currency {
     val getCode: String = "TRY"
 
@@ -1473,8 +1473,8 @@ object Currency {
   }
 
   /**
-   * Trinidad and Tobago Dollar
-   */
+    * Trinidad and Tobago Dollar
+    */
   object TTD extends Currency {
     val getCode: String = "TTD"
 
@@ -1482,8 +1482,8 @@ object Currency {
   }
 
   /**
-   * Tuvalu Dollar
-   */
+    * Tuvalu Dollar
+    */
   object TVD extends Currency {
     val getCode: String = "TVD"
 
@@ -1491,8 +1491,8 @@ object Currency {
   }
 
   /**
-   * Taiwan New Dollar
-   */
+    * Taiwan New Dollar
+    */
   object TWD extends Currency {
     val getCode: String = "TWD"
 
@@ -1500,8 +1500,8 @@ object Currency {
   }
 
   /**
-   * Tanzania Shilling
-   */
+    * Tanzania Shilling
+    */
   object TZS extends Currency {
     val getCode: String = "TZS"
 
@@ -1509,8 +1509,8 @@ object Currency {
   }
 
   /**
-   * Ukraine Hryvnia
-   */
+    * Ukraine Hryvnia
+    */
   object UAH extends Currency {
     val getCode: String = "UAH"
 
@@ -1518,8 +1518,8 @@ object Currency {
   }
 
   /**
-   * Uganda Shilling
-   */
+    * Uganda Shilling
+    */
   object UGX extends Currency {
     val getCode: String = "UGX"
 
@@ -1527,8 +1527,8 @@ object Currency {
   }
 
   /**
-   * United States Dollar
-   */
+    * United States Dollar
+    */
   object USD extends Currency {
     val getCode: String = "USD"
 
@@ -1536,8 +1536,8 @@ object Currency {
   }
 
   /**
-   * Uruguay Peso
-   */
+    * Uruguay Peso
+    */
   object UYU extends Currency {
     val getCode: String = "UYU"
 
@@ -1545,8 +1545,8 @@ object Currency {
   }
 
   /**
-   * Uzbekistan Som
-   */
+    * Uzbekistan Som
+    */
   object UZS extends Currency {
     val getCode: String = "UZS"
 
@@ -1554,8 +1554,8 @@ object Currency {
   }
 
   /**
-   * Venezuela Bolivar
-   */
+    * Venezuela Bolivar
+    */
   object VEF extends Currency {
     val getCode: String = "VEF"
 
@@ -1563,8 +1563,8 @@ object Currency {
   }
 
   /**
-   * Viet Nam Dong
-   */
+    * Viet Nam Dong
+    */
   object VND extends Currency {
     val getCode: String = "VND"
 
@@ -1572,8 +1572,8 @@ object Currency {
   }
 
   /**
-   * Vanuatu Vatu
-   */
+    * Vanuatu Vatu
+    */
   object VUV extends Currency {
     val getCode: String = "VUV"
 
@@ -1581,8 +1581,8 @@ object Currency {
   }
 
   /**
-   * Samoa Tala
-   */
+    * Samoa Tala
+    */
   object WST extends Currency {
     val getCode: String = "WST"
 
@@ -1590,8 +1590,8 @@ object Currency {
   }
 
   /**
-   * East Caribbean Dollar
-   */
+    * East Caribbean Dollar
+    */
   object XCD extends Currency {
     val getCode: String = "XCD"
 
@@ -1599,8 +1599,8 @@ object Currency {
   }
 
   /**
-   * International Monetary Fund (IMF) Special Drawing Rights
-   */
+    * International Monetary Fund (IMF) Special Drawing Rights
+    */
   object XDR extends Currency {
     val getCode: String = "XDR"
 
@@ -1608,8 +1608,8 @@ object Currency {
   }
 
   /**
-   * Communauté Financière Africaine (BCEAO) Franc
-   */
+    * Communauté Financière Africaine (BCEAO) Franc
+    */
   object XOF extends Currency {
     val getCode: String = "XOF"
 
@@ -1617,8 +1617,8 @@ object Currency {
   }
 
   /**
-   * Comptoirs Français du Pacifique (CFP) Franc
-   */
+    * Comptoirs Français du Pacifique (CFP) Franc
+    */
   object XPF extends Currency {
     val getCode: String = "XPF"
 
@@ -1626,8 +1626,8 @@ object Currency {
   }
 
   /**
-   * Yemen Rial
-   */
+    * Yemen Rial
+    */
   object YER extends Currency {
     val getCode: String = "YER"
 
@@ -1635,8 +1635,8 @@ object Currency {
   }
 
   /**
-   * South Africa Rand
-   */
+    * South Africa Rand
+    */
   object ZAR extends Currency {
     val getCode: String = "ZAR"
 
@@ -1644,8 +1644,8 @@ object Currency {
   }
 
   /**
-   * Zambia Kwacha
-   */
+    * Zambia Kwacha
+    */
   object ZMW extends Currency {
     val getCode: String = "ZMW"
 
@@ -1653,8 +1653,8 @@ object Currency {
   }
 
   /**
-   * Zimbabwe Dollar
-   */
+    * Zimbabwe Dollar
+    */
   object ZWD extends Currency {
     val getCode: String = "ZWD"
 

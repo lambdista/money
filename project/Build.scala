@@ -4,12 +4,10 @@ import sbt._
 object MoneyBuild extends Build {
 
   lazy val specs2version = "2.4.12"
-  lazy val logBackVersion = "1.1.2"
-  lazy val projectScalaVersion = "2.11.6"
+  lazy val projectScalaVersion = "2.11.8"
 
   def commonSettings = Seq(
     moduleName := "money",
-    version := "0.3.0",
     organization := "com.lambdista",
     scalaVersion := projectScalaVersion,
     crossScalaVersions := Seq(projectScalaVersion, "2.10.4"),
@@ -61,10 +59,7 @@ object MoneyBuild extends Build {
   lazy val core = (project
     settings (commonSettings ++ Publishing.settings: _*)
     settings(
-    moduleName := "money",
-    libraryDependencies ++= Seq(
-      "ch.qos.logback" % "logback-classic" % logBackVersion
-    )
+    moduleName := "money"
     )
     )
 
