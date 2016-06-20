@@ -24,7 +24,7 @@ object MoneyBuild extends Build {
       "-unchecked"),
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2-core" % specs2version % "test"
-    )/*,
+    ),
     initialCommands in console :=
       """
         |import money._
@@ -37,7 +37,7 @@ object MoneyBuild extends Build {
         |    (GBP, USD) -> 1.59
         |  )
         |
-        |implicit val converter = Converter(conversion)""".stripMargin*/
+        |implicit val converter = Converter(conversion)""".stripMargin
   )
 
   lazy val money = (project in file(".")
