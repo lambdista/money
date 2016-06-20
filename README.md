@@ -32,7 +32,7 @@ the Scala version.
 Here's a simple usage example:
 
 ```scala
-import com.lambdista.money._
+import money._
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -98,7 +98,7 @@ $ sbt console
 This will automatically fire the Scala's REPL and run the following commands for you:
 
 ```scala
-import com.lambdista.money._
+import money._
 
 val conversion: Conversion = Map(
   (EUR, USD) -> 1.13,
@@ -119,7 +119,7 @@ and the conversion map. Of course if you need to use your own conversion you can
 When using the following import:
 
 ```scala
-import com.lambdista.money._
+import money._
 ```
 
 you get the default implicit for `Numeric[Money]` whose implementation is as follows:

@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.lambdista
-
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
 
@@ -23,7 +21,7 @@ import java.text.DecimalFormat
 /**
   * This package object contains utility functions and type aliases
   *
-  * @author Alessandro Lacava
+  * @author Alessandro Lacava (@lambdista)
   * @since 2014-10-27
   */
 package object money {

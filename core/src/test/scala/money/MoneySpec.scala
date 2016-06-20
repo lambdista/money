@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.lambdista.money
+package money
 
 import org.specs2.Specification
 import org.specs2.specification.Fragments
 
 /**
- * Specification test for the [[com.lambdista.money.Money]] class
+ * Specification test for the [[money.Money]] class
  *
- * @author Alessandro Lacava 
+ * @author Alessandro Lacava (@lambdista)
  * @since 2014-11-28
  */
 class MoneySpec extends Specification {
@@ -37,7 +37,7 @@ class MoneySpec extends Specification {
   implicit val converter = Converter(conversion)
 
   val expr = 100.001(USD) + 200(EUR)
-  val exprToGBP = expr(GBP).round(5)
+  val exprToGBP = (expr to GBP).round(5)
   val usd = Currency("$")
   val eur = Currency("€")
 
@@ -65,11 +65,9 @@ class MoneySpec extends Specification {
 
       100(usd) * 23(eur) == 2484(USD) must be true                               $e7
 
-      100(USD) / 23 == 4.34783(USD) must be true                                 $e8
+      testNumericSumWithMoney(100(USD), 200(EUR)) == 316(USD) must be true       $e8
 
       100(USD) > 99(EUR) must be false                                           $e9
-
-      testNumericSumWithMoney(100(USD), 200(EUR)) == 316(USD) must be true       $e10
 
   """
 
@@ -85,13 +83,11 @@ class MoneySpec extends Specification {
 
   def e6 = 100(USD) * 23 == 2300(USD) must beTrue
 
-  def e7 = 100(usd) * 23(eur) == 2599(USD) must beTrue
-
-  def e8 = (100(USD) / 23).round(5) == 4.34783(USD) must beTrue
-
-  def e9 = 100(USD) > 99(EUR) must beFalse
+  def e7 = (100(USD) / 23).round(5) == 4.34783(USD) must beTrue
 
   def testNumericSumWithMoney[T : Numeric](a: T, b: T): T = implicitly[Numeric[T]].plus(a, b)
 
-  def e10 = testNumericSumWithMoney(100(USD), 200(EUR)) == 326(USD) must beTrue
+  def e8 = testNumericSumWithMoney(100(USD), 200(EUR)) == 326(USD) must beTrue
+
+  def e9 = 100(USD) > 99(EUR) must beFalse
 }

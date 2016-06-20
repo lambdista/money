@@ -10,7 +10,7 @@ object MoneyBuild extends Build {
     moduleName := "money",
     organization := "com.lambdista",
     scalaVersion := projectScalaVersion,
-    crossScalaVersions := Seq(projectScalaVersion, "2.10.4"),
+    crossScalaVersions := Seq(projectScalaVersion, "2.10.6"),
     (unmanagedSourceDirectories in Compile) <<= (scalaSource in Compile)(Seq(_)),
     (unmanagedSourceDirectories in Test) <<= (scalaSource in Test)(Seq(_)),
     scalacOptions := Seq(
@@ -24,10 +24,10 @@ object MoneyBuild extends Build {
       "-unchecked"),
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2-core" % specs2version % "test"
-    ),
+    )/*,
     initialCommands in console :=
       """
-        |import com.lambdista.money._
+        |import money._
         |  val conversion: Conversion = Map(
         |    (EUR, USD) -> 1.13,
         |    (EUR, GBP) -> 0.71,
@@ -37,7 +37,7 @@ object MoneyBuild extends Build {
         |    (GBP, USD) -> 1.59
         |  )
         |
-        |implicit val converter = Converter(conversion)""".stripMargin
+        |implicit val converter = Converter(conversion)""".stripMargin*/
   )
 
   lazy val money = (project in file(".")
@@ -46,7 +46,7 @@ object MoneyBuild extends Build {
     settings (commonSettings: _*)
     settings(
     moduleName := "money-root",
-    mainClass in(Compile, run) := Some("com.lambdista.money.example.Usage"),
+    mainClass in(Compile, run) := Some("money.example.Usage"),
     (unmanagedSourceDirectories in Compile) := Nil,
     (unmanagedSourceDirectories in Test) := Nil,
     publish := {},
@@ -67,7 +67,7 @@ object MoneyBuild extends Build {
     settings (commonSettings: _*)
     settings(
     moduleName := "money-examples",
-    mainClass in(Compile, run) := Some("com.lambdista.money.example.Usage"),
+    mainClass in(Compile, run) := Some("money.example.Usage"),
     publish := {},
     publishLocal := {}
     )

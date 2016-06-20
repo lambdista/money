@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.lambdista.money
+package money
 
 /**
   * Generic Currency
   *
-  * @author Alessandro Lacava 
+  * @author Alessandro Lacava (@lambdista)
   * @since 2014-10-27
   */
 trait Currency {
@@ -1487,11 +1487,11 @@ object Currency {
   val $ = USD
 
   /**
-    * Builds a [[com.lambdista.money.Currency]] object by decoding its corresponding code. It's case-insensitive so,
+    * Builds a [[money.Currency]] object by decoding its corresponding code. It's case-insensitive so,
     * for example, passing "USD" or "usd" always yields a USD object.
     *
     * @param s the string to decode
-    * @return an object of type [[com.lambdista.money.Currency]]
+    * @return an object of type [[money.Currency]]
     */
   def apply(s: String): Currency = s.toUpperCase match {
     case "AED" => AED

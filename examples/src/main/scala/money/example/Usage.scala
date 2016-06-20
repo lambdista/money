@@ -1,11 +1,11 @@
-package com.lambdista.money.example
+package money.example
 
-import com.lambdista.money._
+import money._
 
 /**
   * Usage example
   *
-  * @author Alessandro Lacava 
+  * @author Alessandro Lacava (@lambdista)
   * @since 2014-10-27
   */
 object Usage {
@@ -28,7 +28,7 @@ object Usage {
     println(s"sumAndConversion2: $sumAndConversion2")
 
     val sum              = 100.001 (USD) + 200 (EUR)
-    val simpleConversion = sum(GBP)
+    val simpleConversion = sum to GBP
     println(s"simpleConversion: $simpleConversion")
 
     val sumWithSimpleNumber = 100 (USD) + 23.560
@@ -39,7 +39,7 @@ object Usage {
 
     val usd = Currency("USD")
 
-    val multiplication = 100 (usd) * 23 (EUR)
+    val multiplication = 100 (usd) * 23
     println(s"multiplication: $multiplication")
 
     val divisionWithSimpleNumber = 100 (USD) / 23

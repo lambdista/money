@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.lambdista.money
+package money
 
 /**
-  * `Numeric` implementation for [[com.lambdista.money.Money]]
+  * `Numeric` implementation for [[money.Money]]
   *
-  * @author Alessandro Lacava 
+  * @author Alessandro Lacava (@lambdista)
   * @since 2015-06-18
   */
 class NumericMoney(currency: Currency)(implicit converter: Converter)
