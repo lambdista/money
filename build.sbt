@@ -1,9 +1,5 @@
 import Dependencies._
 
-import com.typesafe.sbt.SbtGhPages.GhPagesKeys._
-import com.typesafe.sbt.SbtSite.SiteKeys._
-import UnidocKeys._
-
 lazy val projectScalaVersion = "2.12.0"
 
 lazy val commonSettings = Seq(
@@ -69,17 +65,9 @@ lazy val examples = (project in file("examples"))
   .settings(commonSettings)
   .settings(noPublishSettings)
 
-lazy val docSettings = tutSettings ++ site.settings ++ ghpages.settings ++ unidocSettings ++ Seq(
-    site.addMappingsToSiteDir(mappings in (ScalaUnidoc, packageDoc), "api"),
-    ghpagesNoJekyll := false,
-    git.remoteRepo := "https://github.com/lambdista/config",
-    unidocProjectFilter in (ScalaUnidoc, unidoc) := inAnyProject -- inProjects(examples),
-    includeFilter in makeSite := "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.svg" | "*.js" | "*.swf" | "*.yml" | "*.md"
-  )
-
 lazy val docs = (project in file("docs"))
   .dependsOn(core)
   .settings(commonSettings)
   .settings(noPublishSettings)
-  .settings(docSettings)
-  .settings(moduleName := "config-docs", tutSourceDirectory := file("docs/src/tut"), tutTargetDirectory := file("."))
+  .settings(tutSettings)
+  .settings(moduleName := "money-docs", tutSourceDirectory := file("docs/src/tut"), tutTargetDirectory := file("."))

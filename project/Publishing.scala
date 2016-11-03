@@ -48,7 +48,6 @@ abstract class SonatypePublishing() {
     licenses := Seq(licenseName -> url(licenseUrl)),
     homepage := Some(url(projectUrl)),
     autoAPIMappings := true,
-    apiURL := Some(url("https://lambdista.github.io/money/api/")),
     pomExtra := (
       <scm>
         <url>{scmUrl}</url>
