@@ -8,25 +8,12 @@ Binary release artifacts are published to the [Sonatype OSS Repository Hosting s
 Add the following dependency into your SBT build to use `money`:
 
 ```scala
-libraryDependencies += "com.lambdista" %% "money" % moneyVersion
+libraryDependencies += "com.lambdista" %% "money" % "0.6.0"
 ```
 
-where `moneyVersion` is the version you want to use. 
 You can find all the released versions [here](https://github.com/lambdista/money/releases).
 
-Builds are available for Scala 2.11.x and 2.10.x.
-
-## Build
-This project is managed with [SBT](http://www.scala-sbt.org/) so it can be built using:
-
-```
-$ git clone https://github.com/lambdista/money.git
-$ cd money
-$ sbt package
-```
-
-You just need the *core* `jar` which you can find under the `core/target/scala-$VERSION` directory where `$VERSION` is 
-the Scala version.
+Builds are available for Scala 2.12.x, 2.11.x and 2.10.x.
 
 ## Usage Example
 Here's a simple usage example:
@@ -34,7 +21,7 @@ Here's a simple usage example:
 ```scala
 import money._
 
-object Main {
+object Usage {
   def main(args: Array[String]): Unit = {
     val conversion: Conversion = Map(
       (EUR, USD) -> 1.13,
@@ -47,37 +34,37 @@ object Main {
 
     implicit val converter = Converter(conversion)
 
-    val sumAndConversion1 = 100.001(USD) + 200(EUR) to GBP
+    val sumAndConversion1 = 100.001 (USD) + 200 (EUR) to GBP
     println(s"sumAndConversion1: $sumAndConversion1")
 
-    val sumAndConversion2: Money = 100(USD) + 210.4(EUR) to EUR
+    val sumAndConversion2: Money = 100 (USD) + 210.4 (EUR) to EUR
     println(s"sumAndConversion2: $sumAndConversion2")
 
-    val sum = 100.001(USD) + 200(EUR)
-    val simpleConversion = sum(GBP)
+    val sum              = 100.001 (USD) + 200 (EUR)
+    val simpleConversion = sum to GBP
     println(s"simpleConversion: $simpleConversion")
 
-    val sumWithSimpleNumber = 100(USD) + 23.560
+    val sumWithSimpleNumber = 100 (USD) + 23.560
     println(s"sumWithSimpleNumber: $sumWithSimpleNumber")
 
-    val multiplicationWithSimpleNumber = 100(USD) * 23
+    val multiplicationWithSimpleNumber = 100 (USD) * 23
     println(s"multiplicationWithSimpleNumber: $multiplicationWithSimpleNumber")
 
     val usd = Currency("USD")
 
-    val multiplication = 100(usd) * 23(EUR)
+    val multiplication = 100 (usd) * 23
     println(s"multiplication: $multiplication")
 
-    val divisionWithSimpleNumber = 100(USD) / 23
+    val divisionWithSimpleNumber = 100 (USD) / 23
     println(s"divisionWithSimpleNumber: $divisionWithSimpleNumber")
 
-    val comparison = 100(USD) > 90(EUR)
-    println(s"100 USD > 90 EUR? $comparison")
+    val comparison = 100 (USD) > 99 (EUR)
+    println(s"100 USD > 99 EUR? $comparison")
   }
 }
 ```
 
-As you can see the client code just needs three simple imports and an implicit value of type `Converter`
+As you can see the client code just needs a simple import and an implicit value of type `Converter`
 in order to use the DSL. The operations shown in the previous code are only a few among the available ones.
 Have a look at the `Money` class for a complete coverage.
 

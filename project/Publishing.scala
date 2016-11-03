@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Alessandro Lacava.
+ * Copyright 2016 Alessandro Lacava.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 import sbt.Keys._
 import sbt._
 
-object Publishing extends SonatypePublishing(MoneyBuild) {
+object Publishing extends SonatypePublishing() {
   val projectUrl = "https://github.com/lambdista/money"
   val developerId = "lambdista"
   val developerName = "Alessandro Lacava"
@@ -25,7 +25,7 @@ object Publishing extends SonatypePublishing(MoneyBuild) {
   val licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 }
 
-abstract class SonatypePublishing(build: Build) {
+abstract class SonatypePublishing() {
   def projectUrl: String
   def developerId: String
   def developerName: String
@@ -47,6 +47,8 @@ abstract class SonatypePublishing(build: Build) {
     pomIncludeRepository := { _ => false },
     licenses := Seq(licenseName -> url(licenseUrl)),
     homepage := Some(url(projectUrl)),
+    autoAPIMappings := true,
+    apiURL := Some(url("https://lambdista.github.io/money/api/")),
     pomExtra := (
       <scm>
         <url>{scmUrl}</url>

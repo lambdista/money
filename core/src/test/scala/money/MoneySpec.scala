@@ -16,7 +16,6 @@
 package money
 
 import org.specs2.Specification
-import org.specs2.specification.Fragments
 
 /**
  * Specification test for the [[money.Money]] class
@@ -41,7 +40,7 @@ class MoneySpec extends Specification {
   val usd = Currency("$")
   val eur = Currency("€")
 
-  override def is: Fragments = s2"""
+  override def is = s2"""
     Test for the Money class using the following conversions:
    |    (EUR, USD) -> 1.13,
    |    (EUR, GBP) -> 0.71,

@@ -22,3 +22,5 @@ RELEASE_NOTES.md
 *.iml
 *.iws
 
+private/
+
