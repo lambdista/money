@@ -40,15 +40,12 @@ lazy val money = (project in file("."))
   .enablePlugins(GitBranchPrompt)
   .aggregate(core, examples)
   .dependsOn(core, examples)
-  .settings(commonSettings: _*)
   .settings(
     moduleName := "money-root",
-    mainClass in (Compile, run) := Some("money.example.Usage"),
-    (unmanagedSourceDirectories in Compile) := Nil,
-    (unmanagedSourceDirectories in Test) := Nil,
-    publish := {},
-    publishLocal := {}
+    mainClass in (Compile, run) := Some("money.example.Usage")
   )
+  .settings(commonSettings)
+  .settings(noPublishSettings)
 
 lazy val core =
   (project in file("core"))
