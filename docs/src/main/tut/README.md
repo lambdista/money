@@ -8,7 +8,7 @@ Binary release artifacts are published to the [Sonatype OSS Repository Hosting s
 Add the following dependency into your SBT build to use `money`:
 
 ```scala
-libraryDependencies += "com.lambdista" %% "money" % "0.6.1"
+libraryDependencies += "com.lambdista" %% "money" % "0.6.2"
 ```
 
 You can find all the released versions [here](https://github.com/lambdista/money/releases).
