@@ -269,6 +269,15 @@ object CDF extends Currency {
 }
 
 /**
+  * Coeficiente de Estabilización de Referencia
+  */
+object CER extends Currency {
+  val getCode: String   = "CER"
+
+  override val toString = getCode
+}
+
+/**
   * Switzerland Franc
   */
 object CHF extends Currency {
@@ -278,10 +287,28 @@ object CHF extends Currency {
 }
 
 /**
+  * Chilean Unidad de Fomento
+  */
+object CLF extends Currency {
+  val getCode: String = "CLF"
+
+  override val toString = getCode
+}
+
+/**
   * Chile Peso
   */
 object CLP extends Currency {
   val getCode: String = "CLP"
+
+  override val toString = getCode
+}
+
+/**
+  * Official currency people republic of China. Renminbi
+  */
+object CNH extends Currency {
+  val getCode: String = "CNH"
 
   override val toString = getCode
 }
@@ -997,6 +1024,12 @@ object OMR extends Currency {
   override val toString = getCode
 }
 
+object ORO extends Currency {
+  val getCode: String = "ORO"
+
+  override val toString = getCode
+}
+
 /**
   * Panama Balboa
   */
@@ -1340,6 +1373,15 @@ object UAH extends Currency {
 }
 
 /**
+  * Mexican currency fund unit
+  */
+object UDI extends Currency {
+  val getCode: String = "UDI"
+
+  override val toString = getCode
+}
+
+/**
   * Uganda Shilling
   */
 object UGX extends Currency {
@@ -1358,6 +1400,15 @@ object USD extends Currency {
 }
 
 /**
+  * Unidad de valor real. Colombia
+  */
+object UVR extends Currency {
+  val getCode: String = "UVR"
+
+  override val toString = getCode
+}
+
+/**
   * Uruguay Peso
   */
 object UYU extends Currency {
@@ -1371,6 +1422,15 @@ object UYU extends Currency {
   */
 object UZS extends Currency {
   val getCode: String = "UZS"
+
+  override val toString = getCode
+}
+
+/**
+  * Venezuelan Bolivar Rate
+  */
+object VEB extends Currency {
+  val getCode: String = "VEB"
 
   override val toString = getCode
 }
@@ -1412,6 +1472,22 @@ object WST extends Currency {
 }
 
 /**
+  * Silver Ounce Rate
+  */
+object XAG extends Currency {
+  val getCode: String   = "XAG"
+  override val toString = getCode
+}
+
+/**
+  * Gold Ounce Rate
+  */
+object XAU extends Currency {
+  val getCode: String   = "XAU"
+  override val toString = getCode
+}
+
+/**
   * East Caribbean Dollar
   */
 object XCD extends Currency {
@@ -1439,10 +1515,31 @@ object XOF extends Currency {
 }
 
 /**
+  * Palladium Ounce Rate
+  */
+object XPD extends Currency {
+  val getCode: String = "XPD"
+
+  override val toString = getCode
+}
+
+/**
   * Comptoirs Français du Pacifique (CFP) Franc
   */
 object XPF extends Currency {
   val getCode: String = "XPF"
+
+  override val toString = getCode
+}
+
+object XPT extends Currency {
+  val getCode: String = "XPT"
+
+  override val toString = getCode
+}
+
+object XUL extends Currency {
+  val getCode: String = "XUL"
 
   override val toString = getCode
 }
@@ -1659,5 +1756,17 @@ object Currency {
     case "ZAR" => ZAR
     case "ZMW" => ZMW
     case "ZWD" => ZWD
+    case "CLF" => CLF
+    case "XAG" => XAG
+    case "CER" => CER
+    case "XPT" => XPT
+    case "CNH" => CNH
+    case "XAU" => XAU
+    case "ORO" => ORO
+    case "XPD" => XPD
+    case "XUL" => XUL
+    case "UDI" => UDI
+    case "UVR" => UVR
+    case "VEB" => VEB
   }
 }

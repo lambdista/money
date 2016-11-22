@@ -37,7 +37,7 @@ lazy val noPublishSettings =
   Seq(publish := (), publishLocal := (), publishArtifact := false)
 
 lazy val money = (project in file("."))
-  .enablePlugins(GitBranchPrompt)
+//  .enablePlugins(GitBranchPrompt)
   .aggregate(core, examples)
   .dependsOn(core, examples)
   .settings(
@@ -67,4 +67,4 @@ lazy val docs = (project in file("docs"))
   .settings(commonSettings)
   .settings(noPublishSettings)
   .settings(tutSettings)
-  .settings(moduleName := "money-docs", tutSourceDirectory := file("docs/src/tut"), tutTargetDirectory := file("."))
+  .settings(moduleName := "money-docs", tutSourceDirectory := file("docs/src/main/tut"), tutTargetDirectory := file("."))
