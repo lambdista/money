@@ -37,7 +37,7 @@ lazy val noPublishSettings =
   Seq(publish := (), publishLocal := (), publishArtifact := false)
 
 lazy val money = (project in file("."))
-//  .enablePlugins(GitBranchPrompt)
+  .enablePlugins(GitBranchPrompt)
   .aggregate(core, examples)
   .dependsOn(core, examples)
   .settings(
