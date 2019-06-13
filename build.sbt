@@ -7,37 +7,39 @@ lazy val commonSettings = Seq(
   version := "0.6.2",
   crossScalaVersions := Seq(projectScalaVersion, "2.12.8", "2.11.12"),
   resolvers ++= Seq(Resolver.sonatypeRepo("releases"), Resolver.sonatypeRepo("snapshots")),
-  scalacOptions := (CrossVersion.partialVersion(projectScalaVersion) match {
-    case Some((2, 13)) =>
-      Seq(
-        "-feature",
-        "-language:higherKinds",
-        "-language:implicitConversions",
-        "-language:postfixOps",
-        "-encoding",
-        "utf8",
-        "-deprecation",
-        "-unchecked",
-        "-Ywarn-unused",
-        "-Ywarn-dead-code"
-      )
-    case _ =>
-      Seq(
-        "-feature",
-        "-language:higherKinds",
-        "-language:implicitConversions",
-        "-language:postfixOps",
-        "-Ypartial-unification",
-        "-encoding",
-        "utf8",
-        "-deprecation",
-        "-unchecked",
-        "-Ywarn-unused-import",
-        "-Ywarn-unused",
-        "-Ywarn-dead-code",
-        "-Yno-adapted-args"
-      )
-  }),
+  scalacOptions <<= scalaVersion map { v: String =>
+    CrossVersion.partialVersion(v) match {
+      case Some((2, 13)) =>
+        Seq(
+          "-feature",
+          "-language:higherKinds",
+          "-language:implicitConversions",
+          "-language:postfixOps",
+          "-encoding",
+          "utf8",
+          "-deprecation",
+          "-unchecked",
+          "-Ywarn-unused",
+          "-Ywarn-dead-code"
+        )
+      case _ =>
+        Seq(
+          "-feature",
+          "-language:higherKinds",
+          "-language:implicitConversions",
+          "-language:postfixOps",
+          "-Ypartial-unification",
+          "-encoding",
+          "utf8",
+          "-deprecation",
+          "-unchecked",
+          "-Ywarn-unused-import",
+          "-Ywarn-unused",
+          "-Ywarn-dead-code",
+          "-Yno-adapted-args"
+        )
+    }
+  },
   scalafmtConfig := Some(file(".scalafmt.conf")),
   libraryDependencies ++= coreDeps,
   initialCommands in console :=
@@ -60,10 +62,7 @@ lazy val noPublishSettings = Seq(skip in publish := true)
 lazy val money = (project in file("."))
   .aggregate(core, examples)
   .dependsOn(core, examples)
-  .settings(
-    moduleName := "money-root",
-    mainClass in (Compile, run) := Some("money.example.Usage")
-  )
+  .settings(moduleName := "money-root", mainClass in (Compile, run) := Some("money.example.Usage"))
   .settings(commonSettings)
   .settings(noPublishSettings)
 
@@ -74,10 +73,7 @@ lazy val core =
 
 lazy val examples = (project in file("examples"))
   .dependsOn(core)
-  .settings(
-    moduleName := "money-examples",
-    mainClass in (Compile, run) := Some("money.example.Usage")
-  )
+  .settings(moduleName := "money-examples", mainClass in (Compile, run) := Some("money.example.Usage"))
   .settings(commonSettings)
   .settings(noPublishSettings)
 
