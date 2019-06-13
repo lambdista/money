@@ -21,8 +21,7 @@ package money
   * @author Alessandro Lacava (@lambdista)
   * @since 2015-06-18
   */
-class NumericMoney(currency: Currency)(implicit converter: Converter)
-    extends Numeric[Money] {
+class NumericMoney(currency: Currency)(implicit converter: Converter) extends Numeric[Money] {
   override def plus(x: Money, y: Money): Money = x + y
 
   override def toDouble(x: Money): Double = x.amount.toDouble
@@ -42,4 +41,6 @@ class NumericMoney(currency: Currency)(implicit converter: Converter)
   override def minus(x: Money, y: Money): Money = x - y
 
   override def compare(x: Money, y: Money): Int = x compare y
+
+  def parseString(str: String): Option[Money] = None
 }

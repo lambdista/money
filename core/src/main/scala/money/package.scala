@@ -60,11 +60,11 @@ package object money {
   }
 
   implicit class IntOps(val value: Int) extends AnyVal {
-    def apply(currency: Currency)(implicit converter: Converter): Money = (value: BigDecimal).apply(currency)
+    def apply(currency: Currency)(implicit converter: Converter): Money = BigDecimal(value).apply(currency)
   }
 
   implicit class DoubleOps(val value: Double) extends AnyVal {
-    def apply(currency: Currency)(implicit converter: Converter): Money = (value: BigDecimal).apply(currency)
+    def apply(currency: Currency)(implicit converter: Converter): Money = BigDecimal(value).apply(currency)
   }
 
   implicit def numericMoney(implicit converter: Converter) = new NumericMoney(DEFAULT_CURRENCY)
