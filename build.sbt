@@ -81,6 +81,6 @@ lazy val docs = (project in file("docs"))
   .settings(noPublishSettings)
   .settings(
     moduleName := "money-docs",
-    tutSourceDirectory := file("docs/src/main/tut"),
+    tutSourceDirectory := file("docs/src/tut"),
     tutTargetDirectory := file(".")
   )
