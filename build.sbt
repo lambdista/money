@@ -7,39 +7,37 @@ lazy val commonSettings = Seq(
   version := "0.6.2",
   crossScalaVersions := Seq(projectScalaVersion, "2.12.8", "2.11.12"),
   resolvers ++= Seq(Resolver.sonatypeRepo("releases"), Resolver.sonatypeRepo("snapshots")),
-  scalacOptions <<= scalaVersion map { v: String =>
-    CrossVersion.partialVersion(v) match {
-      case Some((2, 13)) =>
-        Seq(
-          "-feature",
-          "-language:higherKinds",
-          "-language:implicitConversions",
-          "-language:postfixOps",
-          "-encoding",
-          "utf8",
-          "-deprecation",
-          "-unchecked",
-          "-Ywarn-unused",
-          "-Ywarn-dead-code"
-        )
-      case _ =>
-        Seq(
-          "-feature",
-          "-language:higherKinds",
-          "-language:implicitConversions",
-          "-language:postfixOps",
-          "-Ypartial-unification",
-          "-encoding",
-          "utf8",
-          "-deprecation",
-          "-unchecked",
-          "-Ywarn-unused-import",
-          "-Ywarn-unused",
-          "-Ywarn-dead-code",
-          "-Yno-adapted-args"
-        )
-    }
-  },
+  scalacOptions := (CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((2, 13)) =>
+      Seq(
+        "-feature",
+        "-language:higherKinds",
+        "-language:implicitConversions",
+        "-language:postfixOps",
+        "-encoding",
+        "utf8",
+        "-deprecation",
+        "-unchecked",
+        "-Ywarn-unused",
+        "-Ywarn-dead-code"
+      )
+    case _ =>
+      Seq(
+        "-feature",
+        "-language:higherKinds",
+        "-language:implicitConversions",
+        "-language:postfixOps",
+        "-Ypartial-unification",
+        "-encoding",
+        "utf8",
+        "-deprecation",
+        "-unchecked",
+        "-Ywarn-unused-import",
+        "-Ywarn-unused",
+        "-Ywarn-dead-code",
+        "-Yno-adapted-args"
+      )
+  }),
   scalafmtConfig := Some(file(".scalafmt.conf")),
   libraryDependencies ++= coreDeps,
   initialCommands in console :=
