@@ -4,16 +4,17 @@ This Domain-Specific Language (DSL) lets you perform operations among different 
 by transparently doing all internal conversions. The conversion map is injected implicitly by the client code.
 
 ## Using Money
-Binary release artifacts are published to the [Sonatype OSS Repository Hosting service](https://oss.sonatype.org). 
-Add the following dependency into your SBT build to use `money`:
+As a first step you need to add the resolver and dependency to your build file:
 
 ```scala
-libraryDependencies += "com.lambdista" %% "money" % "0.6.2"
+resolvers += "lambdista at bintray" at "https://dl.bintray.com/lambdista/maven"
+
+libraryDependencies += "com.lambdista" %% "money" % "0.7.0"
 ```
 
 You can find all the released versions [here](https://github.com/lambdista/money/releases).
 
-Builds are available for Scala 2.12.x, 2.11.x and 2.10.x.
+Builds are available for Scala 2.13.x, 2.12.x and 2.11.x.
 
 ## Usage Example
 Here's a simple usage example:

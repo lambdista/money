@@ -4,7 +4,7 @@ lazy val commonSettings = Seq(
   moduleName := "money",
   organization := "com.lambdista",
   scalaVersion := projectScalaVersion,
-  version := "0.6.2",
+  version := "0.7.0",
   crossScalaVersions := Seq(projectScalaVersion, "2.12.8", "2.11.12"),
   resolvers ++= Seq(Resolver.sonatypeRepo("releases"), Resolver.sonatypeRepo("snapshots")),
   scalacOptions := (CrossVersion.partialVersion(scalaVersion.value) match {
@@ -81,6 +81,6 @@ lazy val docs = (project in file("docs"))
   .settings(noPublishSettings)
   .settings(
     moduleName := "money-docs",
-    tutSourceDirectory := file("docs/src/main/tut"),
+    tutSourceDirectory := file("docs/src/tut"),
     tutTargetDirectory := file(".")
   )
