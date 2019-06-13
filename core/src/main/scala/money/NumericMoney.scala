@@ -42,5 +42,5 @@ class NumericMoney(currency: Currency)(implicit converter: Converter) extends Nu
 
   override def compare(x: Money, y: Money): Int = x compare y
 
-  override def parseString(str: String): Option[Money] = None
+  def parseString(str: String): Option[Money] = None
 }
