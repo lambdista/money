@@ -29,6 +29,7 @@ import money.{toFormattedString => bigDecimalToFormattedString}
   * @since 2014-10-27
   */
 case class Money(amount: BigDecimal, currency: Currency)(implicit converter: Converter) extends Ordered[Money] {
+
   /**
     * Converts this money to another money represented using otherCurrency
     *

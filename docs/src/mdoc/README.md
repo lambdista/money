@@ -7,14 +7,12 @@ by transparently doing all internal conversions. The conversion map is injected 
 As a first step you need to add the resolver and dependency to your build file:
 
 ```scala
-resolvers += "lambdista at bintray" at "https://dl.bintray.com/lambdista/maven"
-
-libraryDependencies += "com.lambdista" %% "money" % "0.7.0"
+libraryDependencies += "com.lambdista" %% "money" % "0.8.0"
 ```
 
 You can find all the released versions [here](https://github.com/lambdista/money/releases).
 
-Builds are available for Scala 2.13.x, 2.12.x and 2.11.x.
+Builds are available for Scala 2.13.x, 2.12.x.
 
 ## Usage Example
 Here's a simple usage example:
@@ -134,7 +132,7 @@ implicit def numericMoney(implicit converter: Converter) = new NumericMoney(EUR)
 For bugs, questions and discussions please use the [Github Issues](https://github.com/lambdista/money/issues).
 
 ## License
-Copyright 2014 Alessandro Lacava.
+Copyright 2014-@YEAR@ Alessandro Lacava.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance
 with the License. You may obtain a copy of the License at

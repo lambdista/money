@@ -37,11 +37,16 @@ package object money {
     * @return a formatted string representing the value passed as a parameter
     */
   def toFormattedString(
-      value: BigDecimal, decimalDigits: Int = 5, roundingMode: RoundingMode = RoundingMode.HALF_DOWN): String = {
+    value: BigDecimal,
+    decimalDigits: Int = 5,
+    roundingMode: RoundingMode = RoundingMode.HALF_DOWN
+  ): String = {
     val lowerBound = 0
     val upperBound = 100
-    require(decimalDigits >= 0 && decimalDigits <= 100,
-            s"decimalDigits valid range is [$lowerBound, $upperBound], both inclusive")
+    require(
+      decimalDigits >= 0 && decimalDigits <= 100,
+      s"decimalDigits valid range is [$lowerBound, $upperBound], both inclusive"
+    )
 
     val df =
       if (decimalDigits == 0)
