@@ -18,11 +18,11 @@ package money
 import org.specs2.Specification
 
 /**
- * Specification test for the [[money.Money]] class
- *
- * @author Alessandro Lacava (@lambdista)
- * @since 2014-11-28
- */
+  * Specification test for the [[money.Money]] class
+  *
+  * @author Alessandro Lacava (@lambdista)
+  * @since 2014-11-28
+  */
 class MoneySpec extends Specification {
   val conversion: Conversion = Map(
     (EUR, USD) -> 1.13,
@@ -35,10 +35,10 @@ class MoneySpec extends Specification {
 
   implicit val converter = Converter(conversion)
 
-  val expr = 100.001(USD) + 200(EUR)
+  val expr      = 100.001 (USD) + 200 (EUR)
   val exprToGBP = (expr to GBP).round(5)
-  val usd = Currency("$")
-  val eur = Currency("€")
+  val usd       = Currency("$")
+  val eur       = Currency("€")
 
   override def is = s2"""
     Test for the Money class using the following conversions:
@@ -70,23 +70,23 @@ class MoneySpec extends Specification {
 
   """
 
-  def e1 = 100(USD) + 200(USD) == 300(USD) must beTrue
+  def e1 = 100 (USD) + 200 (USD) == 300 (USD) must beTrue
 
-  def e2 = (100.001(USD) + 200(EUR) to GBP).round(5) == 205.38063(GBP) must beTrue
+  def e2 = (100.001 (USD) + 200 (EUR) to GBP).round(5) == 205.38063 (GBP) must beTrue
 
-  def e3 = (100(USD) + 210.4(EUR) to EUR).round(5) == 297.22176(EUR) must beTrue
+  def e3 = (100 (USD) + 210.4 (EUR) to EUR).round(5) == 297.22176 (EUR) must beTrue
 
-  def e4 = exprToGBP == 205.38063(GBP) must beTrue
+  def e4 = exprToGBP == 205.38063 (GBP) must beTrue
 
-  def e5 = 100(USD) + 23.560 == 123.56(USD) must beTrue
+  def e5 = 100 (USD) + 23.560 == 123.56 (USD) must beTrue
 
-  def e6 = 100(USD) * 23 == 2300(USD) must beTrue
+  def e6 = 100 (USD) * 23 == 2300 (USD) must beTrue
 
-  def e7 = (100(USD) / 23).round(5) == 4.34783(USD) must beTrue
+  def e7 = (100 (USD) / 23).round(5) == 4.34783 (USD) must beTrue
 
-  def testNumericSumWithMoney[T : Numeric](a: T, b: T): T = implicitly[Numeric[T]].plus(a, b)
+  def testNumericSumWithMoney[T: Numeric](a: T, b: T): T = implicitly[Numeric[T]].plus(a, b)
 
-  def e8 = testNumericSumWithMoney(100(USD), 200(EUR)) == 326(USD) must beTrue
+  def e8 = testNumericSumWithMoney(100 (USD), 200 (EUR)) == 326 (USD) must beTrue
 
-  def e9 = 100(USD) > 99(EUR) must beFalse
+  def e9 = 100 (USD) > 99 (EUR) must beFalse
 }

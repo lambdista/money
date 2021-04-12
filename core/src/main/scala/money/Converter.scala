@@ -24,7 +24,6 @@ package money
 case class Converter(conversion: Conversion) {
 
   /**
-    *
     * @param from the `Currency` to convert from
     * @param to the `Currency` to convert to
     * @return the conversion rate
@@ -35,7 +34,6 @@ case class Converter(conversion: Conversion) {
   }
 
   /**
-    * 
     * @param sourceMoney the `Money` to convert
     * @param targetCurrency the `Currency` to convert to
     * @return the `Money` obtained by converting `sourceMoney` to `targetCurrency`

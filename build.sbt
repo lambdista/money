@@ -1,10 +1,19 @@
+import java.time.LocalDate
+
 import Dependencies._
 
+lazy val projectName = "money"
+
 lazy val commonSettings = Seq(
-  moduleName := "money",
+  moduleName := projectName,
   organization := "com.lambdista",
+  description := "Scala DSL for money-related operations.",
+  homepage := Some(url("https://github.com/lambdista/money")),
+  licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
+  developers := List(
+    Developer("lambdista", "Alessandro Lacava", "alessandrolacava@gmail.com", url("https://alessandrolacava.com"))
+  ),
   scalaVersion := projectScalaVersion,
-  version := "0.7.0",
   crossScalaVersions := Seq(projectScalaVersion, "2.12.8", "2.11.12"),
   resolvers ++= Seq(Resolver.sonatypeRepo("releases"), Resolver.sonatypeRepo("snapshots")),
   scalacOptions := (CrossVersion.partialVersion(scalaVersion.value) match {
@@ -38,9 +47,9 @@ lazy val commonSettings = Seq(
         "-Yno-adapted-args"
       )
   }),
-  scalafmtConfig := Some(file(".scalafmt.conf")),
+  scalafmtOnCompile := true,
   libraryDependencies ++= coreDeps,
-  initialCommands in console :=
+  console / initialCommands :=
     """
       |import money._
       |  val conversion: Conversion = Map(
@@ -55,32 +64,34 @@ lazy val commonSettings = Seq(
       |implicit val converter = Converter(conversion)""".stripMargin
 )
 
-lazy val noPublishSettings = Seq(skip in publish := true)
+lazy val noPublishSettings = Seq(publish / skip := true)
 
 lazy val money = (project in file("."))
   .aggregate(core, examples)
   .dependsOn(core, examples)
-  .settings(moduleName := "money-root", mainClass in (Compile, run) := Some("money.example.Usage"))
+  .settings(moduleName := s"$projectName-root", Compile / run / mainClass := Some("money.example.Usage"))
   .settings(commonSettings)
   .settings(noPublishSettings)
 
 lazy val core =
   (project in file("core"))
-    .settings(moduleName := "money")
+    .settings(moduleName := projectName)
     .settings(commonSettings)
 
 lazy val examples = (project in file("examples"))
   .dependsOn(core)
-  .settings(moduleName := "money-examples", mainClass in (Compile, run) := Some("money.example.Usage"))
+  .settings(moduleName := s"$projectName-examples", Compile / run / mainClass := Some("money.example.Usage"))
   .settings(commonSettings)
   .settings(noPublishSettings)
 
 lazy val docs = (project in file("docs"))
-  .enablePlugins(TutPlugin)
+  .dependsOn(core)
+  .enablePlugins(MdocPlugin)
   .settings(commonSettings)
   .settings(noPublishSettings)
   .settings(
-    moduleName := "money-docs",
-    tutSourceDirectory := file("docs/src/tut"),
-    tutTargetDirectory := file(".")
+    moduleName := s"$projectName-docs",
+    mdocIn := file("docs/src/mdoc"),
+    mdocOut := file("."),
+    mdocVariables := Map("YEAR" -> LocalDate.now.getYear.toString)
   )
